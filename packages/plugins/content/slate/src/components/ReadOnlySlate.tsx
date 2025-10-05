@@ -1,5 +1,6 @@
 import React from 'react';
-import { SlateReactPresentation } from 'slate-react-presentation';
+import { Slate, Editable, withReact } from 'slate-react';
+import { createEditor } from 'slate';
 import type { SlateProps } from '../types/component';
 import { useRenderElement, useRenderLeave } from './renderHooks';
 
@@ -14,6 +15,9 @@ const ReadOnlySlate = (props: SlateProps) => {
     []
   );
   const renderLeaf = useRenderLeave({ plugins, readOnly: true }, []);
+  
+  const editor = React.useMemo(() => withReact(createEditor()), []);
+  
   // the div around is required to be consistent in styling with the default editor
   return (
     <div
@@ -24,12 +28,16 @@ const ReadOnlySlate = (props: SlateProps) => {
         overflowWrap: 'break-word',
       }}
     >
-      <SlateReactPresentation
-        renderElement={renderElement}
-        renderLeaf={renderLeaf}
+      <Slate
+        editor={editor}
         value={props.data.slate}
-        LeafWrapper={React.Fragment}
-      />
+      >
+        <Editable
+          renderElement={renderElement}
+          renderLeaf={renderLeaf}
+          readOnly={true}
+        />
+      </Slate>
     </div>
   );
 };

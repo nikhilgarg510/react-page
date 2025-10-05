@@ -9,8 +9,8 @@
     "start": "next start"
   },
   "peerDependencies": {
-    "react": ">= 16.14",
-    "react-dom": ">= 16.14"
+    "react": ">= 18.0.0",
+    "react-dom": ">= 18.0.0"
   },
   "dependencies": {
     "@emotion/cache": "^11.10.3",
@@ -20,7 +20,6 @@
     "@mui/icons-material": "^5.8.0",
     "@mui/material": "^5.8.1",
     "@mui/styled-engine-sc": "^5.8.0",
-    "@mui/styles": "^5.8.0",
     "@react-page/editor": "0.0.0",
     "@react-page/plugins-background": "0.0.0",
     "@react-page/plugins-divider": "0.0.0",
@@ -31,8 +30,8 @@
     "@react-page/plugins-video": "0.0.0",
     "@react-page/react-admin": "0.0.0",
     "next": "^13",
-    "ra-data-fakerest": "3.9.3",
-    "react-admin": "^3.14.2",
+    "ra-data-fakerest": "^4.0.0",
+    "react-admin": "^4.0.0",
     "react-katex": "^3.0.1",
     "react-syntax-highlighter": "^15.3.1",
     "react-twitter-widgets": "^1.11.0",
@@ -44,6 +43,6 @@
     "@types/styled-components": "^5.1.15",
     "babel-plugin-styled-components": "^1.11.1",
     "raw-loader": "4.0.1",
-    "react-admin": "^3.14.2"
+    "react-admin": "^4.0.0"
   }
 }

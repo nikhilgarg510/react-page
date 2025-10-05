@@ -7,7 +7,7 @@ import {
   CardContent,
   Typography,
 } from '@mui/material';
-import type { Record as RecordType } from 'ra-core';
+import type { RaRecord as RecordType } from 'ra-core';
 import type { CellPlugin } from '@react-page/editor';
 import slate, {
   DEFAULT_SLATE_PLUGIN_ID,
@@ -37,19 +37,6 @@ import {
 import { cellPlugins } from '../../plugins/cellPlugins';
 import { demo } from '../../sampleContents/demo';
 import { raAboutUs } from '../../sampleContents/raAboutUs';
-import {
-  createGenerateClassName,
-  StylesProvider,
-} from '@material-ui/core/styles';
-
-const generateClassName = createGenerateClassName({
-  // By enabling this option, if you have non-MUI elements (e.g. `<div />`)
-  // using MUI classes (e.g. `.MuiButton`) they will lose styles.
-  // Make sure to convert them to use `styled()` or `<Box />` first.
-  disableGlobal: true,
-  // Class names will receive this seed to avoid name collisions.
-  seed: 'mui-ra',
-});
 
 // see https://github.com/marmelab/react-admin/issues/5896
 const Admin = dynamic(async () => (await import('react-admin')).Admin, {
@@ -250,7 +237,7 @@ const PostList = (props: any) => {
 
 export const PostEdit = (props: any) => (
   <Edit title="Edit a Post" {...props}>
-    <SimpleForm label="summary">
+    <SimpleForm>
       <TextInput disabled source="id" />
       <TextInput source="title" />
       <RaReactPageInput
@@ -264,7 +251,7 @@ export const PostEdit = (props: any) => (
 
 export const PostCreate = (props: any) => (
   <Create title="Create a Post" {...props}>
-    <SimpleForm label="summary">
+    <SimpleForm>
       <TextInput source="id" />
       <TextInput source="title" />
     </SimpleForm>
@@ -293,7 +280,7 @@ const ProductList = (props: any) => {
 
 export const ProductEdit = (props: any) => (
   <Edit title="Edit a Product" {...props}>
-    <SimpleForm label="summary">
+    <SimpleForm>
       <TextInput disabled source="id" />
       <TextInput source="title" />
       <TextInput multiline source="teaserText" />
@@ -304,7 +291,7 @@ export const ProductEdit = (props: any) => (
 
 export const ProductCreate = (props: any) => (
   <Create title="Create a Product" {...props}>
-    <SimpleForm label="summary">
+    <SimpleForm>
       <TextInput source="id" />
       <TextInput source="title" />
       <TextInput multiline source="teaserText" />
@@ -321,11 +308,9 @@ const products = {
 
 export default function ReactAdminExample() {
   return (
-    <StylesProvider generateClassName={generateClassName}>
-      <Admin dataProvider={dataProvider} title="Example Admin">
-        <Resource name="posts" {...posts} />
-        <Resource name="products" {...products} />
-      </Admin>
-    </StylesProvider>
+    <Admin dataProvider={dataProvider} title="Example Admin">
+      <Resource name="posts" {...posts} />
+      <Resource name="products" {...products} />
+    </Admin>
   );
 }
