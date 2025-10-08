@@ -7,6 +7,11 @@
   "module": "./lib-es/index.js",
   "sideEffects": false,
   "typings": "./lib/index.d.ts",
+  "files": [
+    "lib/",
+    "lib-es/",
+    "README.md"
+  ],
   "repository": {
     "url": "https://github.com/react-page/react-page"
   },

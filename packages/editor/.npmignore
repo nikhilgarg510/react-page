@@ -1,1 +1,31 @@
-src/**/*
+# Source files (we only ship compiled code)
+src/
+
+# Build artifacts
+*.tsbuildinfo
+tsconfig*.json
+babel.config.js
+
+# Development files
+.DS_Store
+*.log
+*.tgz
+
+# Test files
+**/__tests__/
+**/*.test.ts
+**/*.test.tsx
+**/*.spec.ts
+**/*.spec.tsx
+
+# Documentation
+*.md
+!README.md
+
+# IDE
+.vscode/
+.idea/
+
+# Git
+.git/
+.gitignore
