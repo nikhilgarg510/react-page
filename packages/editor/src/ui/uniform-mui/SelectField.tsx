@@ -11,8 +11,8 @@ import type { SwitchProps } from '@mui/material/Switch';
 import Switch from '@mui/material/Switch';
 import type { TextFieldProps } from '@mui/material/TextField';
 import TextField from '@mui/material/TextField';
-import omit from 'lodash/omit';
-import xor from 'lodash/xor';
+import omit from 'lodash.omit';
+import xor from 'lodash.xor';
 import type { Ref } from 'react';
 import React from 'react';
 import type { FieldProps } from 'uniforms';
@@ -84,6 +84,7 @@ function Select(props: SelectFieldProps) {
       'disableItem' as never,
       'id',
       'inputRef',
+      'size',
     ]);
 
     const children =

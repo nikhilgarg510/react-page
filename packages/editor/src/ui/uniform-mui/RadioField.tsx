@@ -3,7 +3,7 @@ import FormLabel from '@mui/material/FormLabel';
 import type { RadioProps } from '@mui/material/Radio';
 import RadioMaterial from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
-import omit from 'lodash/omit';
+import omit from 'lodash.omit';
 import React from 'react';
 import type { FieldProps } from 'uniforms';
 import { connectField, filterDOMProps } from 'uniforms';

@@ -103,7 +103,7 @@ const moveToParent = (
     const onlyTextChildren =
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       ((targetNode?.[0] as any).children as Node[])?.every(
-        (child) => Text.isText(child) || Editor.isInline(editor, child)
+        (child) => Text.isText(child) || (Editor.isEditor(child) ? false : Editor.isInline(editor, child as any))
       );
     if (onlyTextChildren) {
       Transforms.setNodes(

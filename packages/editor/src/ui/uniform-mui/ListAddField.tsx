@@ -2,7 +2,7 @@ import type { ButtonProps } from '@mui/material/Button';
 import Button from '@mui/material/Button';
 import type { FormControlProps } from '@mui/material/FormControl';
 import FormControl from '@mui/material/FormControl';
-import cloneDeep from 'lodash/cloneDeep';
+import cloneDeep from 'lodash.clonedeep';
 import type { ReactNode } from 'react';
 import React from 'react';
 import type { FieldProps } from 'uniforms';

@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/ban-types */
 import type { Dispatch } from 'react';
 import React from 'react';
+import type { TypedUseSelectorHook } from 'react-redux';
 import {
   createDispatchHook,
   createSelectorHook,
@@ -16,9 +17,9 @@ export const ReduxProvider = ({ store, ...props }: any) => (
   <Provider store={store} context={ReduxContext} {...props} />
 );
 
-export const useStore = createStoreHook<RootState>(ReduxContext);
+export const useStore = createStoreHook(ReduxContext);
 export const useDispatch = createDispatchHook(
   ReduxContext
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
 ) as () => Dispatch<any>;
-export const useSelector = createSelectorHook<RootState>(ReduxContext);
+export const useSelector: TypedUseSelectorHook<RootState> = createSelectorHook(ReduxContext);

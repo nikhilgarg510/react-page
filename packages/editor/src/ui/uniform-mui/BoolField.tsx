@@ -5,7 +5,7 @@ import FormGroup from '@mui/material/FormGroup';
 import FormLabel from '@mui/material/FormLabel';
 import type { SwitchProps } from '@mui/material/Switch';
 import Switch from '@mui/material/Switch';
-import omit from 'lodash/omit';
+import omit from 'lodash.omit';
 import type { Ref } from 'react';
 import React from 'react';
 import type { FieldProps } from 'uniforms';
@@ -63,7 +63,7 @@ function Bool(props: BoolFieldProps) {
             }
             ref={inputRef as Ref<HTMLButtonElement>}
             value={name}
-            {...omit(filterDOMProps(props), ['helperText', 'fullWidth'])}
+            {...omit(filterDOMProps(props), ['helperText', 'fullWidth', 'size'])}
           />
         }
         label={transform ? transform(label as string) : label}
