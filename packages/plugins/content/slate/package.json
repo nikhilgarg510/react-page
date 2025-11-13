@@ -23,15 +23,15 @@
   "peerDependencies": {
     "@mui/material": "*",
     "@types/react": "*",
-    "react": ">= 16.14",
-    "react-dom": ">= 16.14"
+    "react": ">= 18.0.0",
+    "react-dom": ">= 18.0.0"
   },
   "dependencies": {
     "@emotion/is-prop-valid": "^1.2.0",
-    "@mui/icons-material": "^5.8.0",
+    "@mui/icons-material": "^5.15.0",
     "@react-page/editor": "0.0.0",
-    "@xmldom/xmldom": "^0.8.1",
-    "cssstyle": "^2.3.0",
+    "@xmldom/xmldom": "^0.8.10",
+    "cssstyle": "^3.0.0",
     "deep-rename-keys": "^0.2.1",
     "is-hotkey": "^0.2.0",
     "lodash.clonedeep": "^4.5.0",
@@ -41,10 +41,10 @@
     "lodash.isobject": "^3.0.2",
     "lodash.throttle": "^4.1.1",
     "react-portal": "^4.2.2",
-    "redux-undo": "^1.0.0",
-    "slate": "^0.78.0",
-    "slate-hyperscript": "^0.77.0",
-    "slate-react": "^0.79.0",
+    "redux-undo": "^1.1.0",
+    "slate": "^0.103.0",
+    "slate-hyperscript": "^0.100.0",
+    "slate-react": "^0.108.0",
     "slate-react-presentation": "^0.1.1"
   },
   "publishConfig": {
@@ -59,7 +59,7 @@
     "@types/xmldom": "^0.1.31"
   },
   "browser": {
-    "./lib/HtmlToSlate/parseHtml.js": "./lib/HtmlToSlate/parseHtml.browser.js",
-    "./lib-es/HtmlToSlate/parseHtml.js": "./lib-es/HtmlToSlate/parseHtml.browser.js"
+    "./lib-es/HtmlToSlate/parseHtml.js": "./lib-es/HtmlToSlate/parseHtml.browser.js",
+    "./lib/HtmlToSlate/parseHtml.js": "./lib/HtmlToSlate/parseHtml.browser.js"
   }
 }
