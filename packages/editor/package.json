@@ -3,10 +3,24 @@
   "version": "0.0.0",
   "author": "Marco Wettstein",
   "license": "MIT",
+  "type": "commonjs",
   "main": "./lib/index.js",
-  "module": "./lib-es/index.js",
-  "sideEffects": false,
+  "types": "./lib/index.d.ts",
   "typings": "./lib/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./lib/index.d.ts",
+      "default": "./lib/index.js"
+    },
+    "./lib/index.css": "./lib/index.css",
+    "./package.json": "./package.json"
+  },
+  "sideEffects": false,
+  "files": [
+    "lib",
+    "lib-es",
+    "README.md"
+  ],
   "repository": {
     "url": "https://github.com/react-page/react-page"
   },
@@ -25,6 +39,8 @@
     "react-dom": ">= 18.0.0"
   },
   "dependencies": {
+    "@emotion/react": "11.11.0",
+    "@emotion/styled": "11.11.0",
     "@mui/icons-material": "^5.15.0",
     "@mui/material": "^5.15.0",
     "@welldone-software/why-did-you-render": "^7.0.1",

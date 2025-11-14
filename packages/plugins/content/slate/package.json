@@ -1,10 +1,23 @@
 {
   "name": "@react-page/plugins-slate",
   "version": "0.0.0",
+  "type": "commonjs",
   "main": "./lib/index.js",
-  "module": "./lib-es/index.js",
-  "sideEffects": false,
   "typings": "./lib/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./lib/index.d.ts",
+      "default": "./lib/index.js"
+    },
+    "./lib/index.css": "./lib/index.css",
+    "./package.json": "./package.json"
+  },
+  "sideEffects": false,
+  "files": [
+    "lib",
+    "lib-es",
+    "README.md"
+  ],
   "author": "ORY GmbH",
   "license": "MIT",
   "repository": {
