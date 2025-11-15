@@ -13,5 +13,3 @@ dist/
 examples/build
 *.tsbuildinfo
 .DS_store
-react18-page-demo/
-react18-page-demo-js/
