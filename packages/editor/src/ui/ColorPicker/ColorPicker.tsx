@@ -2,8 +2,7 @@ import Button from '@mui/material/Button';
 import Popover from '@mui/material/Popover';
 import ColorizeIcon from '@mui/icons-material/Colorize';
 import React from 'react';
-import type { ColorChangeHandler } from 'react-color';
-import { ChromePicker } from 'react-color';
+import { RgbaColorPicker } from 'react-colorful';
 import { colorToString } from './colorToString';
 import type { ColorPickerProps, ColorPickerState } from './types';
 
@@ -25,11 +24,10 @@ class ColorPicker extends React.Component<ColorPickerProps> {
     this.setState({ isColorPickerVisible: !this.state.isColorPickerVisible });
   };
 
-  onChange: ColorChangeHandler = (e) =>
-    this.props.onChange && this.props.onChange(e.rgb);
-
-  handleChangeComplete: ColorChangeHandler = (e) =>
-    this.props.onChangeComplete && this.props.onChangeComplete(e.rgb);
+  onChange = (color: any) => {
+    this.props.onChange && this.props.onChange(color);
+    this.props.onChangeComplete && this.props.onChangeComplete(color);
+  };
 
   render() {
     return (
@@ -66,11 +64,10 @@ class ColorPicker extends React.Component<ColorPickerProps> {
             horizontal: 'center',
           }}
         >
-          <div>
-            <ChromePicker
-              color={this.props.color ?? undefined}
+          <div style={{ padding: '10px' }}>
+            <RgbaColorPicker
+              color={this.props.color ?? { r: 0, g: 0, b: 0, a: 1 }}
               onChange={this.onChange}
-              onChangeComplete={this.handleChangeComplete}
             />
           </div>
         </Popover>

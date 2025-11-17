@@ -4,7 +4,7 @@ import ListItem from '@mui/material/ListItem';
 import ListSubheader from '@mui/material/ListSubheader';
 import TextField from '@mui/material/TextField';
 import React from 'react';
-import { Portal } from 'react-portal';
+import { createPortal } from 'react-dom';
 import {
   useIsInsertMode,
   useUiTranslator,
@@ -84,54 +84,54 @@ export const PluginDrawer: React.FC = React.memo(() => {
 
   const filteredPlugins = plugins.filter(searchFilter);
 
-  return (
-    <Portal>
-      <Drawer
-        variant="persistent"
-        className="react-page-plugin-drawer"
-        open={isInsertMode}
-        PaperProps={{
-          style: {
-            width: 320,
-          },
-        }}
+  const portalContent = (
+    <Drawer
+      variant="persistent"
+      className="react-page-plugin-drawer"
+      open={isInsertMode}
+      PaperProps={{
+        style: {
+          width: 320,
+        },
+      }}
+    >
+      <List
+        subheader={
+          <ListSubheader>{t(defaultLabels.insertPlugin)}</ListSubheader>
+        }
       >
-        <List
-          subheader={
-            <ListSubheader>{t(defaultLabels.insertPlugin)}</ListSubheader>
-          }
-        >
-          <ListItem>
-            <TextField
-              inputRef={inputRef}
-              placeholder={t(defaultLabels.searchPlaceholder) ?? ''}
-              fullWidth={true}
-              onChange={onSearch}
-            />
-          </ListItem>
-          {filteredPlugins.length === 0 && (
-            <ListSubheader>
-              {t(defaultLabels.noPluginFoundContent)}
-            </ListSubheader>
-          )}
-        </List>
-        {filteredPlugins.length > 0 && (
-          <List>
-            {filteredPlugins.map((plugin, k: number) => {
-              return (
-                <Item
-                  translations={defaultLabels}
-                  plugin={plugin}
-                  key={k.toString()}
-                  insert={{
-                    plugin: plugin.id,
-                  }}
-                />
-              );
-            })}
-          </List>
+        <ListItem>
+          <TextField
+            inputRef={inputRef}
+            placeholder={t(defaultLabels.searchPlaceholder) ?? ''}
+            fullWidth={true}
+            onChange={onSearch}
+          />
+        </ListItem>
+        {filteredPlugins.length === 0 && (
+          <ListSubheader>
+            {t(defaultLabels.noPluginFoundContent)}
+          </ListSubheader>
         )}
-      </Drawer>
-    </Portal>
+      </List>
+      {filteredPlugins.length > 0 && (
+        <List>
+          {filteredPlugins.map((plugin, k: number) => {
+            return (
+              <Item
+                translations={defaultLabels}
+                plugin={plugin}
+                key={k.toString()}
+                insert={{
+                  plugin: plugin.id,
+                }}
+              />
+            );
+          })}
+        </List>
+      )}
+    </Drawer>
   );
+
+  return typeof document !== 'undefined' ? createPortal(portalContent, document.body) : null;
 });

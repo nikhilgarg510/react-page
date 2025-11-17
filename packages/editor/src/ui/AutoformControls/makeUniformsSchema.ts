@@ -25,7 +25,8 @@ function makeUniformsSchema<T extends DataTType>(
     type: 'object',
     ...jsonSchema,
   };
-  const bridge = new JSONSchemaBridge(fullSchema, createValidator(fullSchema));
+  const validator = createValidator(fullSchema);
+  const bridge = new JSONSchemaBridge({ schema: fullSchema, validator });
 
   // see https://github.com/react-page/react-page/issues/1187
   // we remap props.component to props._customComponent to avoid the underlying issue in uniforms
