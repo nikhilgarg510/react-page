@@ -1,9 +1,16 @@
 import type { Store, Middleware } from 'redux';
 import { createStore, applyMiddleware, compose } from 'redux';
-import thunk from 'redux-thunk';
+import * as reduxThunkModule from 'redux-thunk';
 import rootReducer from './reducer';
 import type { RootState } from './types/state';
 import { isProduction } from './const';
+
+// Handle both ESM and CommonJS exports of redux-thunk
+const thunk =
+  (reduxThunkModule as any).default?.default ||
+  (reduxThunkModule as any).default ||
+  (reduxThunkModule as any).thunk ||
+  reduxThunkModule;
 
 declare global {
   interface Window {
@@ -22,8 +29,8 @@ export default (
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const v: any =
     !isProduction &&
-    typeof window === 'object' &&
-    window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
+      typeof window === 'object' &&
+      window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
       ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({})
       : compose;
 

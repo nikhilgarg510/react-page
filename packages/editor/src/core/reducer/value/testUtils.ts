@@ -1,7 +1,14 @@
 import type { Action } from 'redux';
 import { applyMiddleware, combineReducers, createStore } from 'redux';
-import thunk from 'redux-thunk';
+import * as reduxThunkModule from 'redux-thunk';
 import type { Value } from '../../types/node';
+
+// Handle both ESM and CommonJS exports of redux-thunk
+const thunk =
+  (reduxThunkModule as any).default?.default ||
+  (reduxThunkModule as any).default ||
+  (reduxThunkModule as any).thunk ||
+  reduxThunkModule;
 
 import { value } from './index';
 

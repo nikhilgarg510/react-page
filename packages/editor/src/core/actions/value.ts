@@ -4,10 +4,12 @@ import { generateIds } from './helpers';
 
 export const UPDATE_VALUE = 'UPDATE_VALUE';
 
-export interface UpdateEditableAction extends Action {
+export interface UpdateEditableAction extends Action<typeof UPDATE_VALUE> {
+  type: typeof UPDATE_VALUE;
   ts: Date;
   value: Value | null;
   ids: NewIds;
+  [key: string]: unknown;
 }
 
 export const updateValue = (value: Value | null): UpdateEditableAction => ({
