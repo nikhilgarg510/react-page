@@ -12,6 +12,7 @@ export interface ColorPickerProps {
 
 export type ColorPickerState = {
   isColorPickerVisible: boolean;
+  hexInputValue: string;
 };
 
 export { RgbaColor as RGBColor };
