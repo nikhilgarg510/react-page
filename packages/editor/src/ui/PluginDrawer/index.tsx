@@ -3,8 +3,10 @@ import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListSubheader from '@mui/material/ListSubheader';
 import TextField from '@mui/material/TextField';
+import { ThemeProvider } from '@mui/material';
 import React from 'react';
 import { createPortal } from 'react-dom';
+import { defaultTheme } from '../../ui/defaultTheme';
 import {
   useIsInsertMode,
   useUiTranslator,
@@ -133,5 +135,10 @@ export const PluginDrawer: React.FC = React.memo(() => {
     </Drawer>
   );
 
-  return typeof document !== 'undefined' ? createPortal(portalContent, document.body) : null;
+  return typeof document !== 'undefined'
+    ? createPortal(
+        <ThemeProvider theme={defaultTheme}>{portalContent}</ThemeProvider>,
+        document.body
+      )
+    : null;
 });

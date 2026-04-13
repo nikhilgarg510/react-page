@@ -38,6 +38,7 @@ const PluginComponent: FC<
   const remove = useRemoveCell(nodeId);
 
   const Toolbar = components?.BottomToolbar ?? BottomToolbar;
+  const controls = plugin?.controls;
 
   const componentProps = useMemo<CellPluginComponentProps>(
     () => ({
@@ -60,7 +61,6 @@ const PluginComponent: FC<
       isEditMode,
       focused,
       onChange,
-      isEditMode,
       isPreviewMode,
       remove,
     ]
@@ -106,10 +106,10 @@ const PluginComponent: FC<
           nodeId={nodeId}
           open={focused}
           pluginControls={
-            isEditMode && plugin?.controls ? (
+            isEditMode && controls ? (
               <PluginControls
                 componentProps={componentProps}
-                controls={plugin?.controls}
+                controls={controls}
               />
             ) : null
           }
@@ -119,4 +119,4 @@ const PluginComponent: FC<
   );
 };
 
-export default PluginComponent;
+export default React.memo(PluginComponent);

@@ -10,7 +10,7 @@ import type { SlateProps } from '../types/component';
 import DialogVisibleProvider from './DialogVisibleProvider';
 
 const SlateProvider: FC<PropsWithChildren<SlateProps>> = (props) => {
-  const { data, plugins, children, defaultPluginType } = props;
+  const { data, plugins, children, defaultPluginType, focused } = props;
   const editor = useMemo(
     () =>
       withPaste(
@@ -32,36 +32,38 @@ const SlateProvider: FC<PropsWithChildren<SlateProps>> = (props) => {
   }, [data?.slate]);
 
   useEffect(() => {
-    try {
-      // focus - only if editor has been properly mounted
-      if (ReactEditor.isFocused(editor)) {
-        return; // already focused
-      }
-      // Check if editor is mounted by verifying it can find a DOM node
-      const domNode = ReactEditor.toDOMNode(editor, editor);
-      if (domNode) {
-        ReactEditor.focus(editor);
-      }
-    } catch (e) {
-      // ignore, can happen when editor is not fully mounted yet
-      console.debug('Could not focus editor:', e);
-    }
-    if (data.selection) {
-      // update seleciton, if changed from outside (e.g. through undo)
+    // Use requestAnimationFrame to ensure DOM has been painted before accessing Slate DOM nodes.
+    // This avoids "Cannot resolve a DOM node from Slate node" errors in React 18 concurrent mode.
+    const rafId = requestAnimationFrame(() => {
       try {
-        Transforms.select(editor, data.selection);
+        // Only attempt to focus if the cell is actually focused
+        if (focused && !ReactEditor.isFocused(editor)) {
+          const domNode = ReactEditor.toDOMNode(editor, editor);
+          if (domNode) {
+            ReactEditor.focus(editor);
+          }
+        }
       } catch (e) {
-        // ignore
+        // ignore, can happen when editor is not fully mounted yet
       }
-    } else {
-      // deselect, otherwise slate might throw an eerror if cursor is now on a non existing dom node
-      try {
-        Transforms.deselect(editor);
-      } catch (e) {
-        // ignore
+      if (data.selection) {
+        // update selection, if changed from outside (e.g. through undo)
+        try {
+          Transforms.select(editor, data.selection);
+        } catch (e) {
+          // ignore
+        }
+      } else {
+        // deselect, otherwise slate might throw an error if cursor is now on a non existing dom node
+        try {
+          Transforms.deselect(editor);
+        } catch (e) {
+          // ignore
+        }
       }
-    }
-  }, [data?.slate, data?.selection]);
+    });
+    return () => cancelAnimationFrame(rafId);
+  }, [data?.slate, data?.selection, focused]);
 
   const onChange = useCallback(() => {
     const dataEqual = deepEquals(editor.children, data?.slate);
