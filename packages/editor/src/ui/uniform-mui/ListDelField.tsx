@@ -4,7 +4,7 @@ import type { ReactNode } from 'react';
 import React from 'react';
 import type { FieldProps } from 'uniforms';
 import { connectField, filterDOMProps, joinName, useField } from 'uniforms';
-import DeleteForeverRoundedIcon from '@mui/icons-material/DeleteForeverRounded';
+import { DeleteForeverRounded as DeleteForeverRoundedIcon } from '@mui/icons-material';
 
 export type ListDelFieldProps = FieldProps<
   unknown,

@@ -1,6 +1,6 @@
 import React from 'react';
 import { IconButton, Tooltip } from '@mui/material';
-import Delete from '@mui/icons-material/Delete';
+import { Delete } from '@mui/icons-material';
 import {
   useAllFocusedNodeIds,
   useRemoveMultipleNodeIds,

@@ -1,4 +1,4 @@
-import { RgbaColor } from 'react-colorful';
+import type { RgbaColor } from 'react-colorful';
 
 export interface ColorPickerProps {
   onChange: (color: RgbaColor) => void;
@@ -15,4 +15,4 @@ export type ColorPickerState = {
   hexInputValue: string;
 };
 
-export { RgbaColor as RGBColor };
+export type { RgbaColor as RGBColor };

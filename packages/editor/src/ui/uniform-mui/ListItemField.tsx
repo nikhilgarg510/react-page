@@ -5,7 +5,7 @@ import { IconButton } from '@mui/material';
 import type { ListItemProps } from '@mui/material/ListItem';
 import ListItemMaterial from '@mui/material/ListItem';
 import Stack from '@mui/material/Stack';
-import DragIndicatorIcon from '@mui/icons-material/DragIndicator';
+import { DragIndicator as DragIndicatorIcon } from '@mui/icons-material';
 
 import { useDrag, useDrop } from 'react-dnd';
 import { connectField, joinName, useField } from 'uniforms';

@@ -1,5 +1,5 @@
 import { IconButton, Tooltip } from '@mui/material';
-import ScaleIcon from '@mui/icons-material/AspectRatio';
+import { AspectRatio as ScaleIcon } from '@mui/icons-material';
 import React from 'react';
 import { useUiTranslator } from '../../core/components/hooks';
 const SCALING_FACTORS = [1, 0.8, 0.6, 1.2];

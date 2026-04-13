@@ -1,14 +1,14 @@
 import { IconButton, Tooltip } from '@mui/material';
-import Delete from '@mui/icons-material/Delete';
+import { Delete } from '@mui/icons-material';
 import React from 'react';
 import { useRemoveCell, useUiTranslator } from '../../core/components/hooks';
 import DraftSwitch from '../DraftSwitch';
 import { DuplicateButton } from '../DuplicateButton';
 import { I18nTools } from '../I18nTools';
 import { SelectParentButton } from '../SelectParentButton';
-import { BottomToolbarToolsProps } from './types';
+import type { BottomToolbarToolsProps } from './types';
 
-export { BottomToolbarToolsProps };
+export type { BottomToolbarToolsProps };
 export const BottomToolbarTools: React.FC<BottomToolbarToolsProps> = React.memo(
   ({ nodeId }) => {
     const { t } = useUiTranslator();

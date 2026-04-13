@@ -1,5 +1,5 @@
 import IconButton from '@mui/material/IconButton';
-import VerticalAlignTopIcon from '@mui/icons-material/VerticalAlignTop';
+import { VerticalAlignTop as VerticalAlignTopIcon } from '@mui/icons-material';
 
 import React from 'react';
 import {

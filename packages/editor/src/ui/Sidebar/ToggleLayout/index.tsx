@@ -1,4 +1,4 @@
-import ViewQuilt from '@mui/icons-material/ViewQuilt';
+import { ViewQuilt } from '@mui/icons-material';
 import React from 'react';
 import {
   useIsLayoutMode,

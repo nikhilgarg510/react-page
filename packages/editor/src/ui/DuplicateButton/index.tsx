@@ -1,5 +1,5 @@
 import { IconButton, Tooltip } from '@mui/material';
-import Icon from '@mui/icons-material/FileCopy';
+import { FileCopy as Icon } from '@mui/icons-material';
 import React from 'react';
 import { useDuplicateCell, useUiTranslator } from '../../core/components/hooks';
 

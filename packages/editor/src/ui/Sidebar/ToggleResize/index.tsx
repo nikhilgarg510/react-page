@@ -1,4 +1,4 @@
-import Resize from '@mui/icons-material/SettingsOverscan';
+import { SettingsOverscan as Resize } from '@mui/icons-material';
 import React from 'react';
 import {
   useIsResizeMode,

@@ -1,5 +1,5 @@
 import { Button, DialogContent, Table } from '@mui/material';
-import Translate from '@mui/icons-material/Translate';
+import { Translate } from '@mui/icons-material';
 
 import React, { useCallback } from 'react';
 import {

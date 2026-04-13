@@ -6,7 +6,7 @@ export * from './ui';
 import lazyLoad from './core/helper/lazyLoad';
 import { Migration } from './core/migrations/Migration';
 
-import Editor, { EditorProps } from './editor/Editor';
+import Editor, { type EditorProps } from './editor/Editor';
 import makeUniformsSchema from './ui/AutoformControls/makeUniformsSchema';
 
 import { migrateValue } from './core/migrations/migrate';
@@ -17,7 +17,7 @@ import { objIsNode } from './core/utils/objIsNode';
 import { getTextContents } from './core/utils/getTextContents';
 export { objIsNode };
 export { lazyLoad };
-export { EditorProps };
+export type { EditorProps };
 export { Migration };
 export { makeUniformsSchema };
 export { createValue, getTextContents };
