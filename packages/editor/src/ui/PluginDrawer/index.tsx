@@ -135,10 +135,15 @@ export const PluginDrawer: React.FC = React.memo(() => {
     </Drawer>
   );
 
-  return typeof document !== 'undefined'
-    ? createPortal(
+  if (typeof document === 'undefined') {
+    return null;
+  }
+  return (
+    <>
+      {createPortal(
         <ThemeProvider theme={defaultTheme}>{portalContent}</ThemeProvider>,
         document.body
-      )
-    : null;
+      )}
+    </>
+  );
 });
