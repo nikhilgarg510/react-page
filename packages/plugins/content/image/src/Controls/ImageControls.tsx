@@ -15,6 +15,7 @@ const ImageControls: ImageControlType = (props) => {
         {props.imageUpload && (
           <>
             <ImageUpload
+              allowedExtensions={props.allowedExtensions}
               translations={props.translations}
               imageUpload={props.imageUpload}
               imageUploaded={(image) =>

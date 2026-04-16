@@ -8,6 +8,7 @@ export type ImageSettings = {
   imageUpload?: ImageUploadType;
   Renderer: CellPluginRenderer<ImageState>;
   Controls: ImageControlType;
+  allowedExtensions?: string[];
   translations?: Translations;
   icon?: React.ReactNode;
 };

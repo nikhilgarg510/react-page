@@ -27,6 +27,7 @@ export const defaultTranslations = {
 export const defaultSettings: ImageSettings = {
   Controls: () => <> Controls for this plugin were not provided</>,
   Renderer: () => <>Renderer; for this plugin was not provided </>,
+  allowedExtensions: ['jpg', 'jpeg', 'png'],
   translations: defaultTranslations,
   icon: <Panorama />,
 };

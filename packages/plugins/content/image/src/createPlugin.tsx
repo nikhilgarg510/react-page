@@ -13,6 +13,7 @@ const createPlugin = (settings?: ImageSettings): CellPlugin<ImageState> => {
       Component: (props) => (
         <Controls
           {...props}
+          allowedExtensions={mergedSettings.allowedExtensions}
           translations={mergedSettings.translations}
           imageUpload={mergedSettings.imageUpload}
         />
