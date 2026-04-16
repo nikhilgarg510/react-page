@@ -14,7 +14,9 @@ const getStyles = (props: BackgroundRendererProps) => {
       gradients = [],
     } = {},
   } = props;
+
   let styles: React.CSSProperties = {};
+  
   if (modeFlag && modeFlag & ModeEnum.GRADIENT_MODE_FLAG) {
     const usedGradients = gradients.filter((g) => g.colors && g.colors.length);
     const usedGradientsString = usedGradients
@@ -23,12 +25,12 @@ const getStyles = (props: BackgroundRendererProps) => {
         const firstColorStr = colorToString(firstColor);
         const deg =
           i === props.gradientDegPreviewIndex &&
-          props.gradientDegPreview !== undefined
+            props.gradientDegPreview !== undefined
             ? props.gradientDegPreview
             : g.deg;
         const opacity =
           i === props.gradientOpacityPreviewIndex &&
-          props.gradientOpacityPreview !== undefined
+            props.gradientOpacityPreview !== undefined
             ? props.gradientOpacityPreview
             : g.opacity;
         return (
@@ -37,23 +39,23 @@ const getStyles = (props: BackgroundRendererProps) => {
           'deg, ' +
           (g?.colors?.length !== 1
             ? g?.colors
-                ?.map((c, cpIndex) => {
-                  const color =
-                    i === props.gradientColorPreviewIndex &&
+              ?.map((c, cpIndex) => {
+                const color =
+                  i === props.gradientColorPreviewIndex &&
                     cpIndex === props.gradientColorPreviewColorIndex &&
                     props.gradientColorPreview !== undefined
-                      ? props.gradientColorPreview
-                      : c.color;
-                  if (!color) {
-                    return 'transparent';
-                  }
-                  const colorWithOpacity = {
-                    ...color,
-                    a: color.a !== undefined ? color.a * opacity : opacity,
-                  };
-                  return colorToString(colorWithOpacity);
-                })
-                .join(', ')
+                    ? props.gradientColorPreview
+                    : c.color;
+                if (!color) {
+                  return 'transparent';
+                }
+                const colorWithOpacity = {
+                  ...color,
+                  a: color.a !== undefined ? color.a * opacity : opacity,
+                };
+                return colorToString(colorWithOpacity);
+              })
+              .join(', ')
             : firstColorStr + ', ' + firstColorStr) +
           ')'
         );
@@ -63,6 +65,7 @@ const getStyles = (props: BackgroundRendererProps) => {
       styles = { ...styles, background: usedGradientsString };
     }
   }
+  
   if (modeFlag && modeFlag & ModeEnum.COLOR_MODE_FLAG) {
     const colorStr = colorToString(
       props.backgroundColorPreview
@@ -77,6 +80,7 @@ const getStyles = (props: BackgroundRendererProps) => {
         : modeStr,
     };
   }
+  
   if (modeFlag && modeFlag & ModeEnum.IMAGE_MODE_FLAG) {
     const backgroundFinal = props.imagePreview
       ? props.imagePreview.dataUrl
@@ -122,7 +126,11 @@ const BackgroundHtmlRenderer: FC<PropsWithChildren<BackgroundRendererProps>> = (
           backgroundImage: `linear-gradient(rgba(0, 0, 0, ${darkenFinal}), rgba(0, 0, 0, ${darkenFinal})),linear-gradient(rgba(255, 255, 255, ${lightenFinal}), rgba(255, 255, 255, ${lightenFinal}))`,
         }}
       />
-      {children}
+
+      {/* Children of background should not be wider than 1440px, the eye cannot track that wide */}
+      <div style={{ maxWidth: 1440, margin: "auto" }}>
+        {children}
+      </div>
     </div>
   );
 };
