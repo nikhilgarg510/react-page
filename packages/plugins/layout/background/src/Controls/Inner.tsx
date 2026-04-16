@@ -25,22 +25,14 @@ class Inner extends React.Component<
   }
 
   public render() {
-    const {
-      data: {
-        hasPadding = this.props.defaultHasPadding,
-        modeFlag = this.props.defaultModeFlag,
-        darken = this.props.defaultDarken,
-        lighten = this.props.defaultLighten,
-      },
-    } = this.props;
-    const darkenFinal =
-      this.props.darkenPreview !== undefined
-        ? this.props.darkenPreview
-        : darken ?? 0;
-    const lightenFinal =
-      this.props.lightenPreview !== undefined
-        ? this.props.lightenPreview
-        : lighten ?? 0;
+
+    const hasPadding = this.props.data?.hasPadding ?? this.props.defaultHasPadding;
+    const modeFlag = this.props.data?.modeFlag ?? this.props.defaultModeFlag;
+    const darken = this.props.data?.darken ?? this.props.defaultDarken;
+    const lighten = this.props.data?.lighten ?? this.props.defaultLighten;
+
+    const darkenFinal = this.props.darkenPreview ?? darken ?? 0;
+    const lightenFinal = this.props.lightenPreview ?? lighten ?? 0;
 
     const tabs = this.props.enabledModes
       ? [
@@ -179,9 +171,7 @@ class Inner extends React.Component<
   }
 
   renderModeSwitch = () => {
-    const {
-      data: { modeFlag = this.props.defaultModeFlag },
-    } = this.props;
+    const modeFlag = this.props.data?.modeFlag ?? this.props.defaultModeFlag;
     return (
       <FormControlLabel
         style={{ marginBottom: 16 }}
@@ -275,9 +265,7 @@ class Inner extends React.Component<
   };
 
   ensureModeOn = (mode: ModeEnum) => () => {
-    const {
-      data: { modeFlag = this.props.defaultModeFlag },
-    } = this.props;
+    const modeFlag = this.props.data?.modeFlag ?? this.props.defaultModeFlag;
     if (modeFlag && (modeFlag & mode) === 0) {
       this.props.handleChangeModeSwitch(mode, modeFlag)();
     }
