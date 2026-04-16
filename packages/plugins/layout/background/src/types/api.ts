@@ -8,7 +8,7 @@ export interface BackgroundApi {
   handleChangeLighten: () => void;
   handleChangeLightenPreview: (lighten: number) => void;
   handleChangeHasPadding: () => void;
-  handleChangeModeSwitch: (
+  setModeFlag: (
     mode: ModeEnum | undefined,
     modeFlag: ModeEnum | undefined
   ) => () => void;

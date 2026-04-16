@@ -36,61 +36,61 @@ class Inner extends React.Component<
 
     const tabs = this.props.enabledModes
       ? [
-          ...((this.props.enabledModes & ModeEnum.IMAGE_MODE_FLAG) > 0
-            ? [
-                <Tab
-                  icon={
-                    <ImageIcon
-                      color={
-                        modeFlag && (modeFlag & ModeEnum.IMAGE_MODE_FLAG) > 0
-                          ? 'secondary'
-                          : undefined
-                      }
-                    />
+        ...((this.props.enabledModes & ModeEnum.IMAGE_MODE_FLAG) > 0
+          ? [
+            <Tab
+              icon={
+                <ImageIcon
+                  color={
+                    modeFlag && (modeFlag & ModeEnum.IMAGE_MODE_FLAG) > 0
+                      ? 'secondary'
+                      : undefined
                   }
-                  label={this.props.translations?.imageMode}
-                  value={ModeEnum.IMAGE_MODE_FLAG}
-                  key={ModeEnum.IMAGE_MODE_FLAG}
-                />,
-              ]
-            : []),
-          ...((this.props.enabledModes & ModeEnum.COLOR_MODE_FLAG) > 0
-            ? [
-                <Tab
-                  icon={
-                    <ColorIcon
-                      color={
-                        modeFlag && (modeFlag & ModeEnum.COLOR_MODE_FLAG) > 0
-                          ? 'secondary'
-                          : undefined
-                      }
-                    />
+                />
+              }
+              label={this.props.translations?.imageMode}
+              value={ModeEnum.IMAGE_MODE_FLAG}
+              key={ModeEnum.IMAGE_MODE_FLAG}
+            />,
+          ]
+          : []),
+        ...((this.props.enabledModes & ModeEnum.COLOR_MODE_FLAG) > 0
+          ? [
+            <Tab
+              icon={
+                <ColorIcon
+                  color={
+                    modeFlag && (modeFlag & ModeEnum.COLOR_MODE_FLAG) > 0
+                      ? 'secondary'
+                      : undefined
                   }
-                  label={this.props.translations?.colorMode}
-                  value={ModeEnum.COLOR_MODE_FLAG}
-                  key={ModeEnum.COLOR_MODE_FLAG}
-                />,
-              ]
-            : []),
-          (this.props.enabledModes & ModeEnum.GRADIENT_MODE_FLAG) > 0
-            ? [
-                <Tab
-                  icon={
-                    <GradientIcon
-                      color={
-                        modeFlag && (modeFlag & ModeEnum.GRADIENT_MODE_FLAG) > 0
-                          ? 'secondary'
-                          : undefined
-                      }
-                    />
+                />
+              }
+              label={this.props.translations?.colorMode}
+              value={ModeEnum.COLOR_MODE_FLAG}
+              key={ModeEnum.COLOR_MODE_FLAG}
+            />,
+          ]
+          : []),
+        (this.props.enabledModes & ModeEnum.GRADIENT_MODE_FLAG) > 0
+          ? [
+            <Tab
+              icon={
+                <GradientIcon
+                  color={
+                    modeFlag && (modeFlag & ModeEnum.GRADIENT_MODE_FLAG) > 0
+                      ? 'secondary'
+                      : undefined
                   }
-                  label={this.props.translations?.gradientMode}
-                  value={ModeEnum.GRADIENT_MODE_FLAG}
-                  key={ModeEnum.GRADIENT_MODE_FLAG}
-                />,
-              ]
-            : [],
-        ]
+                />
+              }
+              label={this.props.translations?.gradientMode}
+              value={ModeEnum.GRADIENT_MODE_FLAG}
+              key={ModeEnum.GRADIENT_MODE_FLAG}
+            />,
+          ]
+          : [],
+      ]
       : [];
     return (
       <div>
@@ -172,18 +172,25 @@ class Inner extends React.Component<
 
   renderModeSwitch = () => {
     const modeFlag = this.props.data?.modeFlag ?? this.props.defaultModeFlag;
+
+    // console.log("modeFlag", modeFlag)
+    // console.log("this.state.mode", this.state.mode)
+
+    let checked = false
+    if (modeFlag && this.state.mode)
+      // (value & FLAG) !== 0
+      // Does this bit exist in the number?
+      // Needless complexity with bits, could have been done more elegantly
+      checked = (modeFlag & this.state.mode) !== 0
+
     return (
       <FormControlLabel
-        style={{ marginBottom: 16 }}
+        // MUST have the float: "unset" to cancel MC float:left on this
+        sx={{ mb: 2, ml: 0, float: "unset" }}
         control={
           <Switch
-            onChange={this.props.handleChangeModeSwitch(
-              this.state.mode,
-              modeFlag
-            )}
-            checked={Boolean(
-              modeFlag && this.state.mode && modeFlag & this.state.mode
-            )}
+            onChange={this.props.setModeFlag(this.state.mode, modeFlag)}
+            checked={checked}
           />
         }
         label={this.props.translations?.onOff}
@@ -265,9 +272,15 @@ class Inner extends React.Component<
   };
 
   ensureModeOn = (mode: ModeEnum) => () => {
+
+
     const modeFlag = this.props.data?.modeFlag ?? this.props.defaultModeFlag;
+
+    // console.log("mode", mode)
+    // console.log("modeFlag", modeFlag)
+
     if (modeFlag && (modeFlag & mode) === 0) {
-      this.props.handleChangeModeSwitch(mode, modeFlag)();
+      this.props.setModeFlag(mode, modeFlag)();
     }
   };
 

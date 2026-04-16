@@ -86,12 +86,26 @@ class BackgroundDefaultControls extends React.Component<
 
   handleImageUploaded = () => this.setState({ imagePreview: undefined });
 
-  handleChangeModeSwitch =
+  setModeFlag =
     (mode: ModeEnum | undefined, modeFlag: ModeEnum | undefined) => () => {
       if (mode && modeFlag) {
         modeFlag ^= mode;
+
+        // console.log("modeFlag", modeFlag)
+        // console.log("mode", mode)
+
         this.props.onChange({ modeFlag });
-      } else {
+      }
+      else {
+
+        // MUST reset the modeFlag else after turning OFF the 1st panel
+        // (when no other panel has been turned on)
+        // it cannot be turned ON again
+        modeFlag = this.props.defaultModeFlag
+
+        // console.log("modeFlag", modeFlag)
+        // console.log("mode", mode)
+
         this.props.onChange({ modeFlag });
       }
     };
@@ -105,7 +119,7 @@ class BackgroundDefaultControls extends React.Component<
         handleChangeLighten={this.handleChangeLighten}
         handleChangeLightenPreview={this.handleChangeLightenPreview}
         handleChangeHasPadding={this.handleChangeHasPadding}
-        handleChangeModeSwitch={this.handleChangeModeSwitch}
+        setModeFlag={this.setModeFlag}
         handleChangeBackgroundColorPreview={
           this.handleChangeBackgroundColorPreview
         }
