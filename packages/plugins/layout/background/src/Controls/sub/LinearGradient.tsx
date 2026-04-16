@@ -3,7 +3,7 @@ import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import Slider from '@mui/material/Slider';
 import Typography from '@mui/material/Typography';
-import DeleteIcon from '@mui/icons-material/Delete';
+import { Delete as DeleteIcon } from '@mui/icons-material';
 import type { RGBColor } from '@react-page/editor';
 import { ColorPicker } from '@react-page/editor';
 import React from 'react';
@@ -94,11 +94,11 @@ class LinearGradientComponent extends React.Component<
         gradients: (this.props.data.gradients ?? []).map((g, i) =>
           i === index
             ? {
-                ...g,
-                colors: (g.colors ? g.colors : []).map((c, cpI) =>
-                  cpI === cpIndex ? { ...c, color: e } : c
-                ),
-              }
+              ...g,
+              colors: (g.colors ? g.colors : []).map((c, cpI) =>
+                cpI === cpIndex ? { ...c, color: e } : c
+              ),
+            }
             : g
         ),
       });
@@ -116,17 +116,17 @@ class LinearGradientComponent extends React.Component<
       gradients: this.props.data.gradients?.map((g, i) =>
         i === index
           ? {
-              ...g,
-              colors: [
-                ...(g.colors ? g.colors : []),
-                {
-                  color:
-                    (g.colors ? g.colors : []).length % 2 === index % 2
-                      ? this.props.defaultGradientColor
-                      : this.props.defaultGradientSecondaryColor,
-                },
-              ],
-            }
+            ...g,
+            colors: [
+              ...(g.colors ? g.colors : []),
+              {
+                color:
+                  (g.colors ? g.colors : []).length % 2 === index % 2
+                    ? this.props.defaultGradientColor
+                    : this.props.defaultGradientSecondaryColor,
+              },
+            ],
+          }
           : g
       ),
     });
@@ -137,11 +137,11 @@ class LinearGradientComponent extends React.Component<
       gradients: this.props.data.gradients?.map((g, i) =>
         i === index
           ? {
-              ...g,
-              colors: (g.colors ? g.colors : []).filter(
-                (c, cpI) => cpI !== cpIndex
-              ),
-            }
+            ...g,
+            colors: (g.colors ? g.colors : []).filter(
+              (c, cpI) => cpI !== cpIndex
+            ),
+          }
           : g
       ),
     });
@@ -174,7 +174,7 @@ class LinearGradientComponent extends React.Component<
               : gradient.deg;
           const opacity =
             i === gradientOpacityPreviewIndex &&
-            gradientOpacityPreview !== undefined
+              gradientOpacityPreview !== undefined
               ? gradientOpacityPreview
               : gradient.opacity;
           return (
@@ -224,8 +224,8 @@ class LinearGradientComponent extends React.Component<
                 {colors.map((c, cpIndex) => {
                   const color =
                     i === gradientColorPreviewIndex &&
-                    cpIndex === gradientColorPreviewColorIndex &&
-                    gradientColorPreview !== undefined
+                      cpIndex === gradientColorPreviewColorIndex &&
+                      gradientColorPreview !== undefined
                       ? gradientColorPreview
                       : c.color;
                   return (
