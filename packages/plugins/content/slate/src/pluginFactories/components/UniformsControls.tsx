@@ -2,6 +2,7 @@ import { Dialog, DialogActions, DialogContent } from '@mui/material';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import {Delete as DeleteIcon, Done as DoneIcon} from '@mui/icons-material';
+import type { JsonSchema } from '@react-page/editor';
 import { makeUniformsSchema, AutoForm, AutoFields } from '@react-page/editor';
 import React, { useCallback, useRef, useState } from 'react';
 import type { Data } from '../../types';
