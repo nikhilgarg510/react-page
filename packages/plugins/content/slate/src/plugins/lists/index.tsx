@@ -1,34 +1,20 @@
-import { lazyLoad } from '@react-page/editor';
 import React from 'react';
 import { createListItemPlugin } from '../../pluginFactories';
 import createIndentionPlugin from '../../pluginFactories/createListIndentionPlugin';
 import createListPlugin from '../../pluginFactories/createListPlugin';
 import { LI, OL, UL } from './constants';
-
-const ListIcon = lazyLoad(
-  () => import('@mui/icons-material/FormatListBulleted')
-);
-const OrderedListIcon = lazyLoad(
-  () => import('@mui/icons-material/FormatListNumbered')
-);
-
-const IncreaseIndentIcon = lazyLoad(
-  () => import('@mui/icons-material/FormatIndentIncrease')
-);
-const DecreaseIndentIcon = lazyLoad(
-  () => import('@mui/icons-material/FormatIndentDecrease')
-);
+import { FormatListBulleted, FormatListNumbered, FormatIndentIncrease, FormatIndentDecrease } from '@mui/icons-material'
 
 const ol = createListPlugin({
   type: OL,
-  icon: <OrderedListIcon />,
+  icon: <FormatListNumbered />,
   label: 'Ordered List',
   tagName: 'ol',
 });
 
 const ul = createListPlugin({
   type: UL,
-  icon: <ListIcon />,
+  icon: <FormatListBulleted />,
   label: 'Unordered List',
   tagName: 'ul',
 });
@@ -40,8 +26,8 @@ const li = createListItemPlugin({
 });
 
 const indention = createIndentionPlugin({
-  iconIncrease: <IncreaseIndentIcon />,
-  iconDecrease: <DecreaseIndentIcon />,
+  iconIncrease: <FormatIndentIncrease />,
+  iconDecrease: <FormatIndentDecrease />,
   listItemType: LI,
   labelIncrease: 'Increase Indentation',
   labelDecrease: 'Decrease Indentation',

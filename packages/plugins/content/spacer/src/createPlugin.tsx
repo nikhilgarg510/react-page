@@ -1,12 +1,11 @@
 import type { CellPlugin } from '@react-page/editor';
-import { lazyLoad } from '@react-page/editor';
 import React from 'react';
 import { defaultSettings } from './default/settings';
 
 import type { SpacerSettings } from './types/settings';
 import type { SpacerState } from './types/state';
+import { AspectRatio } from '@mui/icons-material'
 
-const AspectRatio = lazyLoad(() => import('@mui/icons-material/AspectRatio'));
 const createPlugin: (settings: SpacerSettings) => CellPlugin<SpacerState> = (
   settings
 ) => {

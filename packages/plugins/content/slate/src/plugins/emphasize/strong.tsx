@@ -1,14 +1,13 @@
 import React from 'react';
 
-import { lazyLoad } from '@react-page/editor';
 import createMarkPlugin from '../../pluginFactories/createMarkPlugin';
-
-const BoldIcon = lazyLoad(() => import('@mui/icons-material/FormatBold'));
+import { FormatBold } from '@mui/icons-material'
 
 export default createMarkPlugin({
   type: 'EMPHASIZE/STRONG',
   tagName: 'strong',
-  icon: <BoldIcon />,
+  icon: <FormatBold />,
   label: 'Bold',
   hotKey: 'mod+b',
 });
+

@@ -1,12 +1,13 @@
 import createHeadingsPlugin from '../../pluginFactories/createHeadingsPlugin';
-import { lazyLoad } from '@react-page/editor';
 import React from 'react';
-const H1Icon = lazyLoad(() => import('@mui/icons-material/LooksOne'));
-const H2Icon = lazyLoad(() => import('@mui/icons-material/LooksTwo'));
-const H3Icon = lazyLoad(() => import('@mui/icons-material/Looks3'));
-const H4Icon = lazyLoad(() => import('@mui/icons-material/Looks4'));
-const H5Icon = lazyLoad(() => import('@mui/icons-material/Looks5'));
-const H6Icon = lazyLoad(() => import('@mui/icons-material/Looks6'));
+import {
+  LooksOne as H1Icon,
+  LooksTwo as H2Icon,
+  Looks3 as H3Icon,
+  Looks4 as H4Icon,
+  Looks5 as H5Icon,
+  Looks6 as H6Icon,
+} from '@mui/icons-material'
 
 export default {
   h1: createHeadingsPlugin({

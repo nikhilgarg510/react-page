@@ -1,12 +1,10 @@
 import type { CellPlugin } from '@react-page/editor';
-import { lazyLoad } from '@react-page/editor';
 import React from 'react';
 import { defaultSettings } from './default/settings';
 import DividerHtmlRenderer from './Renderer/DividerHtmlRenderer';
 
 import type { DividerSettings } from './types/settings';
-
-const Remove = lazyLoad(() => import('@mui/icons-material/Remove'));
+import { Remove } from '@mui/icons-material'
 
 const createPlugin: (settings: DividerSettings) => CellPlugin = (settings) => {
   const mergedSettings = { ...defaultSettings, ...settings };

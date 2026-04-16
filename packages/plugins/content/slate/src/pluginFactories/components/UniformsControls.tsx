@@ -1,15 +1,12 @@
 import { Dialog, DialogActions, DialogContent } from '@mui/material';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
-import DeleteIcon from '@mui/icons-material/Delete';
-import DoneIcon from '@mui/icons-material/Done';
-import type { JsonSchema } from '@react-page/editor';
+import {Delete as DeleteIcon, Done as DoneIcon} from '@mui/icons-material';
 import { makeUniformsSchema, AutoForm, AutoFields } from '@react-page/editor';
 import React, { useCallback, useRef, useState } from 'react';
 import type { Data } from '../../types';
 
 import type { SlatePluginControls } from '../../types/slatePluginDefinitions';
-import { useEffect } from 'react';
 
 function Controls<T extends Data>(
   props: SlatePluginControls<T> & {
