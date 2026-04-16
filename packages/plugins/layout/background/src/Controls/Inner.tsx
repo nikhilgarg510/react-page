@@ -98,7 +98,7 @@ class Inner extends React.Component<
           <Tabs
             style={{ marginBottom: 16 }}
             value={this.state.mode}
-            onChange={this.handleChangeMode}
+            onChange={(e, mode) => this.setState({ mode })}
             centered={true}
           >
             {tabs}
@@ -271,10 +271,6 @@ class Inner extends React.Component<
     }
   };
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  handleChangeMode = (e: React.ChangeEvent<any>, mode: number) => {
-    this.setState({ mode });
-  };
 }
 
 export default Inner;
