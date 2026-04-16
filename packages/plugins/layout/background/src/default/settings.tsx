@@ -41,12 +41,26 @@ export const defaultSettings: Partial<BackgroundSettings> = {
   defaultBackgroundColor: { r: 245, g: 0, b: 87, a: 1 },
   defaultGradientColor: { r: 245, g: 0, b: 87, a: 1 },
   defaultGradientSecondaryColor: { r: 71, g: 245, b: 87, a: 1 },
+
+  // This is the panel number and cycles thru 1/2/3 as the tabs are switched
   defaultMode: 1,
+
+  // This is the sum of the enums of the 3 tabs, depending on which is set
+  // Value  Binary	Flags set
+  // 0	    000	    none
+  // 1	    001	    IMAGE
+  // 2	    010	    COLOR
+  // 3	    011	    IMAGE + COLOR
+  // 4	    100	    GRADIENT
+  // 5	    101	    IMAGE + GRADIENT
+  // 6	    110	    COLOR + GRADIENT
+  // 7	    111	    all
   defaultModeFlag: 1,
+  
   defaultDarken: 0.1,
   defaultLighten: 0,
   defaultHasPadding: true,
-  defaultIsParallax: true,
+  defaultIsParallax: false,
   translations: defaultTranslations,
   enabledModes: IMAGE_MODE_FLAG | COLOR_MODE_FLAG | GRADIENT_MODE_FLAG,
   Controls: () => <> Controls for this plugin were not provided</>,

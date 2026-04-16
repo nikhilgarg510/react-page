@@ -24,10 +24,11 @@ class ImageComponent extends React.Component<
 
   handleChangeIsParallax = (e: React.ChangeEvent<HTMLInputElement>) => {
     this.props.ensureModeOn();
+
     this.props.onChange({
       isParallax:
         this.props.data.isParallax === undefined
-          ? false
+          ? !this.props.defaultIsParallax
           : !this.props.data.isParallax,
     });
   };
@@ -44,8 +45,9 @@ class ImageComponent extends React.Component<
 
   render() {
     const {
-      data: { isParallax = true, background = '' },
+      data: { isParallax = this.props.defaultIsParallax, background = '' },
     } = this.props;
+
     return (
       <div>
         <div style={{ display: 'flex' }}>
@@ -73,12 +75,14 @@ class ImageComponent extends React.Component<
                 ? this.props.translations?.haveUrl
                 : this.props.translations?.imageUrl
             }
-            style={{ width: '256px' }}
+            style={{ width: '400px' }}
             value={background}
             onChange={this.handleChangeBackground}
           />
 
           <FormControlLabel
+            // Whats with MUI and its -11px margin-left BS??
+            sx={{ ml: 0 }}
             control={
               <Switch
                 onChange={this.handleChangeIsParallax}
