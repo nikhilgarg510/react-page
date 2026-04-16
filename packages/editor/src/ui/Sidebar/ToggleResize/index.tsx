@@ -1,4 +1,4 @@
-import { SettingsOverscan as Resize } from '@mui/icons-material';
+import { SyncAlt as ResizeIcon } from '@mui/icons-material';
 import React from 'react';
 import {
   useIsResizeMode,
@@ -15,7 +15,7 @@ const ToggleResize: React.FC<Props> = (props) => {
   const setResizeMode = useSetResizeMode();
   return (
     <Button
-      icon={<Resize />}
+      icon={<ResizeIcon />}
       description={props.label}
       active={isResizeMode}
       onClick={setResizeMode}

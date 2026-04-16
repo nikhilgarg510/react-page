@@ -1,4 +1,4 @@
-import { ViewQuilt } from '@mui/icons-material';
+import { OpenWith as MoveIcon } from '@mui/icons-material';
 import React from 'react';
 import {
   useIsLayoutMode,
@@ -14,7 +14,7 @@ const ToggleLayout: React.FC<Props> = ({ label }) => {
   const setLayoutMode = useSetLayoutMode();
   return (
     <Button
-      icon={<ViewQuilt />}
+      icon={<MoveIcon />}
       description={label}
       active={isLayoutMode}
       onClick={setLayoutMode}
