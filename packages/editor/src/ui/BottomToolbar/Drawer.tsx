@@ -59,7 +59,7 @@ export const BottomToolbarDrawer: FC<
           style={{
             pointerEvents: 'all',
             border: `${dark ? darkBlack : brightBorder} 1px solid`,
-            borderRadius: '4px 4px 0 0',
+            borderRadius: '12px 12px 0 0',
             backgroundColor: dark ? darkBlack : bright,
             padding: '12px 24px',
 
