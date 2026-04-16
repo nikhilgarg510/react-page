@@ -1,12 +1,5 @@
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Slider from '@mui/material/Slider';
-import Switch from '@mui/material/Switch';
-import Tab from '@mui/material/Tab';
-import Tabs from '@mui/material/Tabs';
-import Typography from '@mui/material/Typography';
-import ColorIcon from '@mui/icons-material/ColorLens';
-import GradientIcon from '@mui/icons-material/Gradient';
-import ImageIcon from '@mui/icons-material/Landscape';
+import { FormControlLabel, Slider, Switch, Tab, Tabs, Typography } from '@mui/material';
+import { ColorLens as ColorIcon, Gradient as GradientIcon, Landscape as ImageIcon } from '@mui/icons-material';
 
 import React from 'react';
 import type { BackgroundApi } from '../types/api';
