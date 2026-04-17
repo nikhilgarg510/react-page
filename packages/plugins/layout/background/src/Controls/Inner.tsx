@@ -273,7 +273,6 @@ class Inner extends React.Component<
 
   ensureModeOn = (mode: ModeEnum) => () => {
 
-
     const modeFlag = this.props.data?.modeFlag ?? this.props.defaultModeFlag;
 
     // console.log("mode", mode)
