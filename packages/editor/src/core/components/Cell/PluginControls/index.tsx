@@ -9,6 +9,7 @@ import type {
   DataTType,
 } from '../../../types';
 
+// Create the vertical Tabs here
 const ControlsList: React.FC<{
   controls: ControlsDefList;
   componentProps: CellPluginComponentProps<DataTType>;
@@ -25,6 +26,7 @@ const ControlsList: React.FC<{
     >
       <Tabs
         sx={{
+          borderTopLeftRadius: 12,
           marginTop: '-12px',
           marginBottom: '-12px',
           marginLeft: '-24px',
