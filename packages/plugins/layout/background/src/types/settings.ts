@@ -21,6 +21,7 @@ export type BackgroundSettings = {
   defaultHasPadding?: boolean;
   defaultIsParallax?: boolean;
   imageUpload?: ImageUploadType;
+  allowedExtensions?: string[];
   translations?: Translations;
   cellStyle?: CellPlugin<BackgroundState>['cellStyle'];
 };

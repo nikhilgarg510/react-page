@@ -54,6 +54,7 @@ class ImageComponent extends React.Component<
           {this.props.imageUpload && (
             <React.Fragment>
               <ImageUpload
+                allowedExtensions={this.props.allowedExtensions}
                 translations={this.props.translations}
                 imageUpload={this.props.imageUpload}
                 imageLoaded={this.handleImageLoaded}
