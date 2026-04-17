@@ -37,7 +37,7 @@ const ImageControls: ImageControlType = (props) => {
               : props.translations?.imageUrl
           )}
           name="src"
-          // style={{ flex: 1 }}
+          sx={{ width: 400 }}
           value={props.data.src ?? ''}
           onChange={(e) =>
             props.onChange({
@@ -54,7 +54,7 @@ const ImageControls: ImageControlType = (props) => {
         placeholder={t(props.translations?.hrefPlaceholder) ?? ''}
         label={t(props.translations?.hrefLabel) ?? ''}
         name="href"
-        style={{ width: '400px' }}
+        sx={{ width: 400, mb: 1 }}
         value={props.data.href ?? ''}
         onChange={(e) =>
           props.onChange({
@@ -64,6 +64,8 @@ const ImageControls: ImageControlType = (props) => {
       />
 
       <FormControlLabel
+        // MUST have the float: "unset" to cancel MC float:left on this
+        sx={{ ml: 0, float: "unset" }}
         control={
           <Checkbox
             checked={props.data.openInNewWindow ?? false}
