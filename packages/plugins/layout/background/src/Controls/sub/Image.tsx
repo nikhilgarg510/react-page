@@ -76,7 +76,7 @@ class ImageComponent extends React.Component<
                 ? this.props.translations?.haveUrl
                 : this.props.translations?.imageUrl
             }
-            style={{ width: '400px' }}
+            sx={{ mt: 1, width: 400 }}
             value={background}
             onChange={this.handleChangeBackground}
           />

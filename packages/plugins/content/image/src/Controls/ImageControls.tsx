@@ -37,7 +37,7 @@ const ImageControls: ImageControlType = (props) => {
               : props.translations?.imageUrl
           )}
           name="src"
-          sx={{ width: 400 }}
+          sx={{ mt: 1, width: 400 }}
           value={props.data.src ?? ''}
           onChange={(e) =>
             props.onChange({
@@ -85,7 +85,7 @@ const ImageControls: ImageControlType = (props) => {
         placeholder={t(props.translations?.altPlaceholder) ?? ''}
         label={t(props.translations?.altLabel) ?? ''}
         name="alt"
-        style={{ width: '400px' }}
+        sx={{ mt: 1, width: 400 }}
         value={props.data.alt ?? ''}
         onChange={(e) =>
           props.onChange({
