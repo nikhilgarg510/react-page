@@ -1,20 +1,16 @@
-import Drawer from '@mui/material/Drawer';
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListSubheader from '@mui/material/ListSubheader';
-import TextField from '@mui/material/TextField';
-import { ThemeProvider } from '@mui/material';
 import React from 'react';
+import { Drawer, IconButton, List, ListItem, ListSubheader, TextField } from '@mui/material';
 import { createPortal } from 'react-dom';
-import { defaultTheme } from '../../ui/defaultTheme';
 import {
   useIsInsertMode,
   useUiTranslator,
   useDisplayModeReferenceNodeId,
   useAllCellPluginsForNode,
+  useSetEditMode,
 } from '../../core/components/hooks';
 import type { CellPlugin } from '../../core/types';
 import Item from './Item/index';
+import { CancelOutlined } from '@mui/icons-material';
 
 export interface PluginDrawerLabels {
   noPluginFoundContent: string;
@@ -22,6 +18,9 @@ export interface PluginDrawerLabels {
   insertPlugin: string;
   dragMe: string;
 }
+import { ThemeProvider } from '@mui/material';
+import { defaultTheme } from '../defaultTheme';
+
 
 const getPluginTitle = (plugin: CellPlugin) =>
   (plugin.title || plugin.text) ?? '';
@@ -35,6 +34,7 @@ export const PluginDrawer: React.FC = React.memo(() => {
   };
   const nodeId = useDisplayModeReferenceNodeId();
   const plugins = useAllCellPluginsForNode(nodeId);
+  const setEditMode = useSetEditMode();
 
   const { t } = useUiTranslator();
   const [searchText, setSearchText] = React.useState<string>('');
@@ -42,16 +42,17 @@ export const PluginDrawer: React.FC = React.memo(() => {
     (plugin: CellPlugin) => {
       const id = plugin.id;
       const title = getPluginTitle(plugin);
+
       return (
         plugin &&
         id &&
         !plugin.hideInMenu &&
-        (id.toLowerCase().startsWith(searchText?.toLowerCase()) ||
+        (id.toLowerCase().includes(searchText?.toLowerCase()) ||
           (plugin.description &&
             plugin.description
               .toLowerCase()
-              .startsWith(searchText?.toLowerCase())) ||
-          (title && title.toLowerCase().startsWith(searchText?.toLowerCase())))
+              .includes(searchText?.toLowerCase())) ||
+          (title && title.toLowerCase().includes(searchText?.toLowerCase())))
       );
     },
     [searchText]
@@ -97,9 +98,24 @@ export const PluginDrawer: React.FC = React.memo(() => {
         },
       }}
     >
+
+
       <List
         subheader={
-          <ListSubheader>{t(defaultLabels.insertPlugin)}</ListSubheader>
+          <ListSubheader>
+            {t(defaultLabels.insertPlugin)}
+
+            <IconButton
+              sx={{
+                float: "right",
+                mt: 0.5,
+              }}
+              onClick={() => setEditMode()}
+            >
+              <CancelOutlined />
+            </IconButton>
+
+          </ListSubheader>
         }
       >
         <ListItem>
