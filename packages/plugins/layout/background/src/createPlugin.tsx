@@ -5,9 +5,7 @@ import type { BackgroundState } from './types/state';
 
 import { defaultSettings } from './default/settings';
 import type { CellPlugin } from '@react-page/editor';
-import { lazyLoad } from '@react-page/editor';
-
-const Icon = lazyLoad(() => import('@mui/icons-material/CropLandscape'));
+import { CropLandscape } from '@mui/icons-material'
 
 const createPlugin = (settings: BackgroundSettings) => {
   const mergedSettings = { ...defaultSettings, ...settings };
@@ -26,7 +24,7 @@ const createPlugin = (settings: BackgroundSettings) => {
 
     title: mergedSettings.translations?.pluginName,
     description: mergedSettings.translations?.pluginDescription,
-    icon: <Icon />,
+    icon: <CropLandscape />,
 
     createInitialChildren: settings.getInitialChildren,
     cellStyle: mergedSettings.cellStyle,
