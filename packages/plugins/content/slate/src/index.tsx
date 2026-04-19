@@ -16,7 +16,6 @@ import { getTextContents } from './utils/getTextContent';
 import makeSlatePluginsFromDef from './utils/makeSlatePluginsFromDef';
 import transformInitialSlateState from './utils/transformInitialSlateState';
 import { useSafeSetState } from './utils/useSafeSetState';
-import { Subject } from '@mui/icons-material'
 
 const slatePlugins = defaultPlugins;
 
@@ -29,6 +28,7 @@ export {
 };
 
 const SlateEditor = lazyLoad(() => import('./components/SlateEditor'));
+const Subject = lazyLoad(() => import('@mui/icons-material/Subject'));
 const Controls = lazyLoad(() => import('./components/Controls'));
 const SlateProvider = lazyLoad(() => import('./components/SlateProvider'));
 

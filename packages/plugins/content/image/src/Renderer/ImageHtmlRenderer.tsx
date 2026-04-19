@@ -2,9 +2,10 @@ import React from 'react';
 
 import { iconStyle } from './../common/styles';
 import type { CellPluginComponentProps } from '@react-page/editor';
+import { lazyLoad } from '@react-page/editor';
 import type { ImageState } from '../types/state';
 
-import { Landscape } from '@mui/icons-material'
+const ImageIcon = lazyLoad(() => import('@mui/icons-material/Landscape'));
 
 const ImageHtmlRenderer: React.FC<CellPluginComponentProps<ImageState>> = (
   props
@@ -36,7 +37,7 @@ const ImageHtmlRenderer: React.FC<CellPluginComponentProps<ImageState>> = (
   ) : (
     <div>
       <div className="react-page-plugins-content-image-placeholder">
-        <Landscape style={iconStyle} />
+        <ImageIcon style={iconStyle} />
       </div>
     </div>
   );

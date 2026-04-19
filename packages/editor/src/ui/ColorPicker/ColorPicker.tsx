@@ -1,7 +1,7 @@
 import Button from '@mui/material/Button';
 import Popover from '@mui/material/Popover';
 import TextField from '@mui/material/TextField';
-import { Colorize as ColorizeIcon } from '@mui/icons-material';
+import ColorizeIcon from '@mui/icons-material/Colorize';
 import React from 'react';
 import { RgbaColorPicker } from 'react-colorful';
 import { colorToString, rgbaToHex, hexToRgba } from './colorToString';

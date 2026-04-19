@@ -1,12 +1,16 @@
 import React from 'react';
 
+import { lazyLoad } from '@react-page/editor';
 import createMarkPlugin from '../../pluginFactories/createMarkPlugin';
-import { FormatUnderlined } from '@mui/icons-material'
+
+const UnderlinedIcon = lazyLoad(
+  () => import('@mui/icons-material/FormatUnderlined')
+);
 
 export default createMarkPlugin({
   type: 'EMPHASIZE/U',
   tagName: 'u',
-  icon: <FormatUnderlined />,
+  icon: <UnderlinedIcon />,
   label: 'Underline',
   hotKey: 'mod+u',
 });

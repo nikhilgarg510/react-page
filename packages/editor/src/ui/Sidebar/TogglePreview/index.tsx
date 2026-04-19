@@ -1,4 +1,4 @@
-import { Devices } from '@mui/icons-material';
+import Devices from '@mui/icons-material/Devices';
 import React from 'react';
 import {
   useIsPreviewMode,

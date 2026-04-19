@@ -5,7 +5,7 @@ import {
   useDuplicateMultipleCells,
   useUiTranslator,
 } from '../../core/components/hooks';
-import { FileCopy as Icon } from '@mui/icons-material';
+import Icon from '@mui/icons-material/FileCopy';
 
 const DuplicateAll: React.FC = () => {
   const duplicate = useDuplicateMultipleCells();

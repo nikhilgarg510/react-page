@@ -1,5 +1,10 @@
 import React from 'react';
-import { Drawer, IconButton, List, ListItem, ListSubheader, TextField } from '@mui/material';
+import Drawer from '@mui/material/Drawer';
+import IconButton from '@mui/material/Drawer';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListSubheader from '@mui/material/ListSubheader';
+import TextField from '@mui/material/TextField';
 import { createPortal } from 'react-dom';
 import {
   useIsInsertMode,
@@ -10,7 +15,7 @@ import {
 } from '../../core/components/hooks';
 import type { CellPlugin } from '../../core/types';
 import Item from './Item/index';
-import { CancelOutlined } from '@mui/icons-material';
+import CancelIcon from '@mui/icons-material/Cancel';
 
 export interface PluginDrawerLabels {
   noPluginFoundContent: string;
@@ -112,7 +117,7 @@ export const PluginDrawer: React.FC = React.memo(() => {
               }}
               onClick={() => setEditMode()}
             >
-              <CancelOutlined />
+              <CancelIcon />
             </IconButton>
 
           </ListSubheader>

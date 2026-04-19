@@ -3,7 +3,7 @@ import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import Slider from '@mui/material/Slider';
 import Typography from '@mui/material/Typography';
-import { Delete as DeleteIcon } from '@mui/icons-material';
+import DeleteIcon from '@mui/icons-material/Delete';
 import type { RGBColor } from '@react-page/editor';
 import { ColorPicker } from '@react-page/editor';
 import React from 'react';

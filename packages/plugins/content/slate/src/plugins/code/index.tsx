@@ -1,11 +1,13 @@
+import { lazyLoad } from '@react-page/editor';
 import React from 'react';
 import createComponentPlugin from '../../pluginFactories/createComponentPlugin';
-import { Code } from '@mui/icons-material'
+
+const Icon = lazyLoad(() => import('@mui/icons-material/Code'));
 
 const block = createComponentPlugin({
   type: 'CODE/CODE',
   object: 'block',
-  icon: <Code />,
+  icon: <Icon />,
   label: 'Code Block',
   addToolbarButton: true,
   addHoverButton: false,
@@ -31,7 +33,7 @@ const block = createComponentPlugin({
 const mark = createComponentPlugin({
   type: 'CODE/CODE',
   object: 'mark',
-  icon: <Code />,
+  icon: <Icon />,
   label: 'Code',
   addHoverButton: true,
   addToolbarButton: false,

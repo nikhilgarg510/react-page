@@ -1,5 +1,5 @@
 import { IconButton, Dialog } from '@mui/material';
-import { Translate } from '@mui/icons-material';
+import Translate from '@mui/icons-material/Translate';
 
 import React, { useState } from 'react';
 import SelectLang from './SelectLang';

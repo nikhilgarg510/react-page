@@ -1,5 +1,5 @@
 import Fab from '@mui/material/Fab';
-import { Delete } from '@mui/icons-material';
+import Delete from '@mui/icons-material/Delete';
 import classNames from 'classnames';
 import React from 'react';
 import { useIsLayoutMode, useTrashDrop } from '../../core/components/hooks';

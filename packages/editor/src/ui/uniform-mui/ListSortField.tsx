@@ -2,11 +2,9 @@ import { ButtonGroup, Stack, styled } from '@mui/material';
 import type { IconButtonProps } from '@mui/material/IconButton';
 import IconButtonMaterial from '@mui/material/IconButton';
 
-import {
-  ArrowUpward as ArrowUpwardIcon,
-  ArrowDownward as ArrowDownwardIcon,
-  DragIndicator as DragIndicatorIcon,
-} from '@mui/icons-material';
+import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
+import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
+import DragIndicatorIcon from '@mui/icons-material/DragIndicator';
 
 import type { ReactNode } from 'react';
 import React from 'react';

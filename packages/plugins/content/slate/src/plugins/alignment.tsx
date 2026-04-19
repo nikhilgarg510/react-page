@@ -1,10 +1,22 @@
+import { lazyLoad } from '@react-page/editor';
 import React from 'react';
 import createDataPlugin from '../pluginFactories/createDataPlugin';
 
-import { FormatAlignLeft, FormatAlignCenter, FormatAlignRight, FormatAlignJustify } from '@mui/icons-material'
+const AlignLeftIcon = lazyLoad(
+  () => import('@mui/icons-material/FormatAlignLeft')
+);
+const AlignCenterIcon = lazyLoad(
+  () => import('@mui/icons-material/FormatAlignCenter')
+);
+const AlignRightIcon = lazyLoad(
+  () => import('@mui/icons-material/FormatAlignRight')
+);
+const AlignJustifyIcon = lazyLoad(
+  () => import('@mui/icons-material/FormatAlignJustify')
+);
 
 const left = createDataPlugin<{ align: 'left' }>({
-  icon: <FormatAlignLeft />,
+  icon: <AlignLeftIcon />,
   label: 'Align Left',
   object: 'block',
   addToolbarButton: true,
@@ -14,7 +26,7 @@ const left = createDataPlugin<{ align: 'left' }>({
 });
 
 const center = createDataPlugin<{ align: 'center' }>({
-  icon: <FormatAlignCenter />,
+  icon: <AlignCenterIcon />,
   label: 'Align Center',
   object: 'block',
   addToolbarButton: true,
@@ -24,7 +36,7 @@ const center = createDataPlugin<{ align: 'center' }>({
 });
 
 const right = createDataPlugin<{ align: 'right' }>({
-  icon: <FormatAlignRight />,
+  icon: <AlignRightIcon />,
   label: 'Align Right',
   object: 'block',
   addToolbarButton: true,
@@ -34,7 +46,7 @@ const right = createDataPlugin<{ align: 'right' }>({
 });
 
 const justify = createDataPlugin<{ align: 'justify' }>({
-  icon: <FormatAlignJustify />,
+  icon: <AlignJustifyIcon />,
   label: 'Align Justify',
   object: 'block',
   addToolbarButton: true,

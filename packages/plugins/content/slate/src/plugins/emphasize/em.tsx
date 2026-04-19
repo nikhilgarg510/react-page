@@ -1,13 +1,14 @@
 import React from 'react';
 
+import { lazyLoad } from '@react-page/editor';
 import createMarkPlugin from '../../pluginFactories/createMarkPlugin';
-import { FormatItalic } from '@mui/icons-material'
+
+const ItalicIcon = lazyLoad(() => import('@mui/icons-material/FormatItalic'));
 
 export default createMarkPlugin({
   type: 'EMPHASIZE/EM',
   tagName: 'em',
-  icon: <FormatItalic />,
+  icon: <ItalicIcon />,
   label: 'Italic',
   hotKey: 'mod+i',
 });
-

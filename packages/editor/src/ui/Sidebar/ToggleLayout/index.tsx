@@ -1,4 +1,4 @@
-import { OpenWith as MoveIcon } from '@mui/icons-material';
+import MoveIcon from '@mui/icons-material/OpenWith';
 import React from 'react';
 import {
   useIsLayoutMode,

@@ -1,4 +1,4 @@
-import { AddBox as AddIcon } from '@mui/icons-material';
+import ContentAdd from '@mui/icons-material/AddBox';
 import React from 'react';
 import {
   useIsInsertMode,
@@ -14,7 +14,7 @@ const ToggleInsert: React.FC<Props> = ({ label }) => {
   const setInsertMode = useSetInsertMode();
   return (
     <Button
-      icon={<AddIcon />}
+      icon={<ContentAdd />}
       description={label}
       active={isInsertMode}
       onClick={setInsertMode}

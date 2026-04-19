@@ -2,12 +2,10 @@ import { Fab } from '@mui/material';
 import type { CSSProperties } from 'react';
 import React from 'react';
 
-import {
-  ArrowDropUp as IconUp,
-  ArrowDropDown as IconDown,
-  ArrowRight as IconRight,
-  ArrowLeft as IconLeft,
-} from '@mui/icons-material';
+import IconUp from '@mui/icons-material/ArrowDropUp';
+import IconDown from '@mui/icons-material/ArrowDropDown';
+import IconRight from '@mui/icons-material/ArrowRight';
+import IconLeft from '@mui/icons-material/ArrowLeft';
 import {
   useMoveNodeDown,
   useMoveNodeUp,

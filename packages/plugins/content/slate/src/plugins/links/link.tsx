@@ -1,6 +1,8 @@
+import { lazyLoad } from '@react-page/editor';
 import React from 'react';
 import createComponentPlugin from '../../pluginFactories/createComponentPlugin';
-import { Link } from '@mui/icons-material'
+
+const LinkIcon = lazyLoad(() => import('@mui/icons-material/Link'));
 
 type LinkData = {
   href: string;
@@ -10,7 +12,7 @@ type LinkData = {
 const link = createComponentPlugin<LinkData>({
   type: 'LINK/LINK',
   object: 'inline',
-  icon: <Link />,
+  icon: <LinkIcon />,
   label: 'Link',
   addHoverButton: true,
   addToolbarButton: true,
