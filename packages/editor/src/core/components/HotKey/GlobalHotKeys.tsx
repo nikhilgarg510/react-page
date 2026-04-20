@@ -85,6 +85,8 @@ const GlobalHotKeys: React.FC<{ focusRef: RefObject<HTMLDivElement> }> = ({
     [editor, isEditMode]
   );
 
+  // console.log("Outside handlers:isInsertMode", isInsertMode)
+
   const handlers = useMemo<HotkeyHandlers>(() => {
     const handleCopy = (deleteAfter = false) => {
       // copy cell, unless text is selected
@@ -121,6 +123,9 @@ const GlobalHotKeys: React.FC<{ focusRef: RefObject<HTMLDivElement> }> = ({
           if (someCellIsFocused) {
             blurAllCells();
           }
+
+          // console.log("Inside handlers: isInsertMode", isInsertMode)
+
           if (isInsertMode) {
             setEditMode();
           }
@@ -167,8 +172,8 @@ const GlobalHotKeys: React.FC<{ focusRef: RefObject<HTMLDivElement> }> = ({
                     ? commonAncestorNode.cells[0].id
                     : commonAncestorNode.id
                   : commonAncestorNode.rows?.[
-                      commonAncestorNode.rows.length - 1
-                    ].id // if common ancestor is a cell (usually the root cell, add below last row)
+                    commonAncestorNode.rows.length - 1
+                  ].id // if common ancestor is a cell (usually the root cell, add below last row)
                 : null;
               insertAfter(node, insertAfterNodeId);
             }
