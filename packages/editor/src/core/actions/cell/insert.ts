@@ -1,5 +1,5 @@
 import type { Action } from 'redux';
-import { cloneWithNewIds } from '../../../core/utils/cloneWithNewIds';
+import { cloneWithNewIds } from '../../utils/cloneWithNewIds';
 import type { HoverTarget } from '../../service/hover/computeHover';
 import type {
   Cell,

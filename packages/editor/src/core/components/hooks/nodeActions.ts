@@ -24,7 +24,7 @@ import type { CellDrag, PartialCell, Node } from '../../types/node';
 import { isRow } from '../../types/node';
 import { useAllCellPluginsForNode } from './node';
 import { useEditorStore, useLang } from './options';
-import { cloneWithNewIds } from '../../../core/utils/cloneWithNewIds';
+import { cloneWithNewIds } from '../../utils/cloneWithNewIds';
 import { useDisplayModeReferenceNodeId } from './displayMode';
 import type { CellPluginOnChangeOptions } from '../../types';
 

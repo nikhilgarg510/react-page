@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
-import type { Cell, HoverInsertActions, Node, Row } from '../../../core/types';
-import { isRow } from '../../../core/types';
+import type { Cell, HoverInsertActions, Node, Row } from '../../types';
+import { isRow } from '../../types';
 import { useIsEditMode } from './displayMode';
 import { useDropActions } from './dragDropActions';
 import { useNodeAsHoverTarget, useNodeProps } from './node';
