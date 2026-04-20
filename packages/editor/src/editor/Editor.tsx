@@ -69,7 +69,9 @@ const Editor: FC<PropsWithChildren<EditorProps>> = ({
       lang={lang}
       cellSpacing={cellSpacing}
     />
-  ) : (
+  ) 
+  : 
+  (
     <EditableEditor
       fallback={
         <HTMLRenderer
