@@ -1,7 +1,7 @@
 // re-exports for customization
 // TODO: add more if required
 export * from './BottomToolbar';
-export * from './AutoformControls';
+// export * from './AutoformControls';
 
 export * from './I18nTools';
 export * from './DuplicateButton';

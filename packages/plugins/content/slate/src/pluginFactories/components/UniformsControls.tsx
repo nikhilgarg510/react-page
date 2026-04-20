@@ -1,10 +1,14 @@
+// This file is not even used, what a blasted pain
 import { Dialog, DialogActions, DialogContent } from '@mui/material';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import DeleteIcon from '@mui/icons-material/Delete';
 import DoneIcon from '@mui/icons-material/Done';
 import type { JsonSchema } from '@react-page/editor';
-import { makeUniformsSchema, AutoForm, AutoFields } from '@react-page/editor';
+import AutoForm from '@react-page/editor';
+import AutoFields from '@react-page/editor';
+import makeUniformsSchema from '@react-page/editor';
+
 import React, { useCallback, useRef, useState } from 'react';
 import type { Data } from '../../types';
 

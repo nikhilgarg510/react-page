@@ -7,7 +7,8 @@ import lazyLoad from './core/helper/lazyLoad';
 import { Migration } from './core/migrations/Migration';
 
 import Editor, { type EditorProps } from './editor/Editor';
-import makeUniformsSchema from './ui/AutoformControls/makeUniformsSchema';
+
+// import makeUniformsSchema from './ui/AutoformControls/makeUniformsSchema';
 
 import { migrateValue } from './core/migrations/migrate';
 import deepEquals from './core/utils/deepEquals';
@@ -19,7 +20,7 @@ export { objIsNode };
 export { lazyLoad };
 export type { EditorProps };
 export { Migration };
-export { makeUniformsSchema };
+// export { makeUniformsSchema };
 export { createValue, getTextContents };
 export { migrateValue };
 

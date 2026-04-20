@@ -1,7 +1,7 @@
 import { Tab, Tabs } from '@mui/material';
 import React, { useState } from 'react';
 
-import { AutoformControls } from '../../../../ui';
+import { AutoformControls } from '../../../../ui/AutoformControls';
 import type {
   CellPluginComponentProps,
   ControlsDef,
@@ -68,7 +68,9 @@ const Controls: React.FC<{
   controls: ControlsDef;
   componentProps: CellPluginComponentProps;
 }> = React.memo(({ controls, componentProps }) => {
+  
   let pluginControls = null;
+
   if (Array.isArray(controls)) {
     return <ControlsList componentProps={componentProps} controls={controls} />;
   }
@@ -76,10 +78,15 @@ const Controls: React.FC<{
   if (controls?.type === 'custom') {
     const { Component } = controls;
     pluginControls = <Component {...componentProps} {...controls} />;
-  } else if (controls?.type === 'autoform') {
+  } 
+  
+  else if (controls?.type === 'autoform') {
     pluginControls = <AutoformControls {...componentProps} {...controls} />;
   }
-  return <div style={{ overflow: 'auto', flex: 1 }}>{pluginControls}</div>;
+
+  return <div style={{ overflow: 'auto', flex: 1 }}>
+    {pluginControls}
+  </div>;
 });
 
 const PluginControls: React.FC<{
