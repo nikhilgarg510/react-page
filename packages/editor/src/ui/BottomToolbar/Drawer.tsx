@@ -1,7 +1,6 @@
-import { useTheme, ThemeProvider } from '@mui/material';
+import { useTheme } from '@mui/material';
 import type { DrawerProps } from '@mui/material';
 import { Divider, Drawer, Portal } from '@mui/material';
-import { defaultTheme } from '../defaultTheme';
 import type { FC, PropsWithChildren } from 'react';
 import React, { Fragment } from 'react';
 import { useIsSmallScreen } from '../../core/components/hooks';
@@ -39,7 +38,6 @@ export const BottomToolbarDrawer: FC<
   const dark = theme.palette.mode === 'dark';
   return (
     <Portal>
-      <ThemeProvider theme={defaultTheme}>
       <Drawer
         variant="persistent"
         className={className}
@@ -91,7 +89,6 @@ export const BottomToolbarDrawer: FC<
           ))}
         </div>
       </Drawer>
-      </ThemeProvider>
     </Portal>
   );
 };
