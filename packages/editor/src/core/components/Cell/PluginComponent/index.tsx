@@ -1,6 +1,6 @@
 import type { FC, PropsWithChildren } from 'react';
 import React, { useMemo } from 'react';
-import { BottomToolbar } from '../../../../ui';
+import { BottomToolbar } from '../../../../ui/BottomToolbar';
 import type { CellPluginComponentProps } from '../../../types';
 import {
   usePluginOfCell,
