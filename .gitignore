@@ -15,3 +15,4 @@ examples/build
 .DS_store
 react18-demo-js-exportable/
 react18-demo-js/
+exportable-packages/
