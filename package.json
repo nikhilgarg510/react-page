@@ -66,8 +66,6 @@
     "analyze": "ANALYZE=true npm-run-all build",
     "coveralls": "cat ./coverage/lcov.info | coveralls",
     "bootstrap": "lerna bootstrap",
-    "pack:exportable": "node scripts/pack-all.mjs",
-    "build+pack:exportable": "yarn build:lib && node scripts/pack-all.mjs",
     "build": "cross-env NODE_ENV=production lerna run build --stream",
     "build:lib": "cross-env NODE_ENV=production lerna run build --ignore @react-page/examples --stream",
     "build:examples": "yarn --cwd examples build",
