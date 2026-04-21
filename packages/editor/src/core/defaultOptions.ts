@@ -32,6 +32,7 @@ export const DEFAULT_OPTIONS: Required<Options> = {
   sidebarPosition: 'rightAbsolute',
   customOptions: [],
   uiTheme: defaultTheme,
+  inheritTheme: false,
   shouldShowErrorInCells: false,
 };
 

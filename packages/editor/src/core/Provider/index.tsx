@@ -38,9 +38,14 @@ const Provider: FC<PropsWithChildren<ProviderProps>> = ({
         <CallbacksProvider {...callbacks}>
           <DndProvider>
             <EditorStoreProvider lang={lang} value={value}>
-              <ThemeProvider theme={options.uiTheme || DEFAULT_OPTIONS.uiTheme}>
+              {/* Since this is part of a larger project, inherit the MUI theme  */}
+              {options.inheritTheme ?
                 <BlurGate>{children}</BlurGate>
-              </ThemeProvider>
+                :
+                <ThemeProvider theme={options.uiTheme || DEFAULT_OPTIONS.uiTheme}>
+                  <BlurGate>{children}</BlurGate>
+                </ThemeProvider>
+              }
             </EditorStoreProvider>
           </DndProvider>
         </CallbacksProvider>

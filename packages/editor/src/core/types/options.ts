@@ -132,10 +132,14 @@ export type Options = {
   hideEditorSidebar?: boolean;
 
   customOptions?: React.ComponentType[];
+  
   /**
    * pass a custom theme to the ui (mui)
    */
   uiTheme?: Theme;
+
+  inheritTheme?: Boolean;
+
   /**
    * whether to show errors in cells or swallow them. It will log them to the console
    */
