@@ -1,6 +1,6 @@
 import React from 'react';
 import Drawer from '@mui/material/Drawer';
-import IconButton from '@mui/material/Drawer';
+import IconButton from '@mui/material/IconButton';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListSubheader from '@mui/material/ListSubheader';
@@ -156,15 +156,5 @@ export const PluginDrawer: React.FC = React.memo(() => {
     </Drawer>
   );
 
-  if (typeof document === 'undefined') {
-    return null;
-  }
-  return (
-    <>
-      {createPortal(
-        <ThemeProvider theme={defaultTheme}>{portalContent}</ThemeProvider>,
-        document.body
-      )}
-    </>
-  );
+  return typeof document !== 'undefined' ? createPortal(portalContent, document.body) : null;
 });
