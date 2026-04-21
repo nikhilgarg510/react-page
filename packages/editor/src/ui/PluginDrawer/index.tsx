@@ -23,8 +23,8 @@ export interface PluginDrawerLabels {
   insertPlugin: string;
   dragMe: string;
 }
-import { ThemeProvider } from '@mui/material';
-import { defaultTheme } from '../defaultTheme';
+// import { ThemeProvider } from '@mui/material';
+// import { defaultTheme } from '../defaultTheme';
 
 
 const getPluginTitle = (plugin: CellPlugin) =>
