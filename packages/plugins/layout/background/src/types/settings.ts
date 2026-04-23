@@ -19,6 +19,9 @@ export type BackgroundSettings = {
   defaultDarken?: number;
   defaultLighten?: number;
   defaultHasPadding?: boolean;
+  defaultHasMaxWidth?: boolean;
+  defaultMaxWidth?:number;
+  // defaultInnerMaxWidth?:number;
   defaultIsParallax?: boolean;
   imageUpload?: ImageUploadType;
   allowedExtensions?: string[];

@@ -16,7 +16,7 @@ const getStyles = (props: BackgroundRendererProps) => {
   } = props;
 
   let styles: React.CSSProperties = {};
-  
+
   if (modeFlag && modeFlag & ModeEnum.GRADIENT_MODE_FLAG) {
     const usedGradients = gradients.filter((g) => g.colors && g.colors.length);
     const usedGradientsString = usedGradients
@@ -65,7 +65,7 @@ const getStyles = (props: BackgroundRendererProps) => {
       styles = { ...styles, background: usedGradientsString };
     }
   }
-  
+
   if (modeFlag && modeFlag & ModeEnum.COLOR_MODE_FLAG) {
     const colorStr = colorToString(
       props.backgroundColorPreview
@@ -80,7 +80,7 @@ const getStyles = (props: BackgroundRendererProps) => {
         : modeStr,
     };
   }
-  
+
   if (modeFlag && modeFlag & ModeEnum.IMAGE_MODE_FLAG) {
     const backgroundFinal = props.imagePreview
       ? props.imagePreview.dataUrl
@@ -107,6 +107,9 @@ const BackgroundHtmlRenderer: FC<PropsWithChildren<BackgroundRendererProps>> = (
       darken = props.defaultDarken,
       lighten = props.defaultLighten,
       hasPadding = props.defaultHasPadding,
+      hasMaxWidth = props.defaultHasMaxWidth,
+      maxWidth = props.defaultMaxWidth,
+      // innerMaxWidth = props.defaultInnerMaxWidth,
     } = {},
   } = props;
   const darkenFinal =
@@ -114,25 +117,54 @@ const BackgroundHtmlRenderer: FC<PropsWithChildren<BackgroundRendererProps>> = (
   const lightenFinal =
     props.lightenPreview !== undefined ? props.lightenPreview : lighten;
   const containerStyles = getStyles(props);
-  return (
-    <div
-      className="react-page-plugins-layout-background"
-      style={{ ...containerStyles, ...(hasPadding ? {} : { padding: 0 }) }}
-    >
-      <div
-        className="react-page-plugins-layout-background__backstretch"
-        style={{
-          // tslint:disable-next-line:max-line-length
-          backgroundImage: `linear-gradient(rgba(0, 0, 0, ${darkenFinal}), rgba(0, 0, 0, ${darkenFinal})),linear-gradient(rgba(255, 255, 255, ${lightenFinal}), rgba(255, 255, 255, ${lightenFinal}))`,
-        }}
-      />
 
-      {/* Children of background should not be wider than 1440px, the eye cannot track that wide */}
-      <div style={{ maxWidth: 1440, margin: "auto" }}>
-        {children}
-      </div>
+  let shouldUseMaxWidth = false;
+  if (window.innerWidth > 768 && hasMaxWidth && maxWidth)
+    shouldUseMaxWidth = true
+
+  let contentsMaxWidth = 1366;
+  if (window.innerWidth >= 1920) {
+    contentsMaxWidth = 1440;
+  }
+  // if (innerMaxWidth < contentsMaxWidth) {
+  //   contentsMaxWidth = innerMaxWidth
+  // }
+
+  // console.log("innerMaxWidth", innerMaxWidth)
+
+  const background = <div
+    className="react-page-plugins-layout-background"
+    style={{
+      ...containerStyles,
+      ...(hasPadding ? {} : { padding: 0 }),
+      ...(shouldUseMaxWidth ? { borderRadius: 16 } : {})
+    }}
+  >
+
+    <div
+      className="react-page-plugins-layout-background__backstretch"
+      style={{
+        // tslint:disable-next-line:max-line-length
+        backgroundImage: `linear-gradient(rgba(0, 0, 0, ${darkenFinal}), rgba(0, 0, 0, ${darkenFinal})),linear-gradient(rgba(255, 255, 255, ${lightenFinal}), rgba(255, 255, 255, ${lightenFinal}))`,
+        borderRadius: (shouldUseMaxWidth ? 16 : 0)
+      }}
+    />
+
+    {/* Children of background should not be wider than 1440px, the eye cannot track that wide */}
+    <div style={{ maxWidth: contentsMaxWidth, margin: "auto" }}>
+      {children}
     </div>
-  );
+
+  </div>
+
+  if (shouldUseMaxWidth) {
+    return (
+      <div style={{ maxWidth, paddingLeft: 8, paddingRight: 8, margin: "auto" }}>
+        {background}
+      </div>
+    )
+  }
+  else return background
 };
 
 export default BackgroundHtmlRenderer;

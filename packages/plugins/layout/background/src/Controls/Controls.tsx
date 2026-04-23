@@ -57,6 +57,23 @@ class BackgroundDefaultControls extends React.Component<
     });
   };
 
+  handleChangeHasMaxWidth = () => {
+    const hasMaxWidth = !(this.props.data.hasMaxWidth ?? this.props.defaultHasMaxWidth);
+    this.props.onChange({
+      hasMaxWidth
+    });
+  };
+
+  handleChangeMaxWidth = (_value: string) => {
+    let value = parseInt(_value) || this.props.defaultMaxWidth
+    this.props.onChange({ maxWidth: value });
+  };
+
+  // handleChangeInnerMaxWidth = (_value: string) => {
+  //   let value = parseInt(_value) || this.props.defaultInnerMaxWidth
+  //   this.props.onChange({ innerMaxWidth: value });
+  // };
+
   handleChangeBackgroundColorPreview = (e?: RGBColor) =>
     this.setState({ backgroundColorPreview: e });
 
@@ -119,6 +136,12 @@ class BackgroundDefaultControls extends React.Component<
         handleChangeLighten={this.handleChangeLighten}
         handleChangeLightenPreview={this.handleChangeLightenPreview}
         handleChangeHasPadding={this.handleChangeHasPadding}
+
+        handleChangeHasMaxWidth={this.handleChangeHasMaxWidth}
+        handleChangeMaxWidth={this.handleChangeMaxWidth}
+
+        // handleChangeInnerMaxWidth={this.handleChangeInnerMaxWidth}
+
         setModeFlag={this.setModeFlag}
         handleChangeBackgroundColorPreview={
           this.handleChangeBackgroundColorPreview

@@ -8,6 +8,13 @@ export interface BackgroundApi {
   handleChangeLighten: () => void;
   handleChangeLightenPreview: (lighten: number) => void;
   handleChangeHasPadding: () => void;
+
+  handleChangeHasMaxWidth: () => void;
+  handleChangeMaxWidth: (value: string) => void;
+
+  handleChangeHasInnerMaxWidth: () => void;
+  // handleChangeInnerMaxWidth: (value: string) => void;
+
   setModeFlag: (
     mode: ModeEnum | undefined,
     modeFlag: ModeEnum | undefined

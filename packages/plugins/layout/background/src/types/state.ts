@@ -11,5 +11,8 @@ export type BackgroundState = {
   lighten: number;
   darken: number;
   hasPadding: boolean;
+  hasMaxWidth: boolean;
+  maxWidth: number;
+  // innerMaxWidth: number;
   gradients: Gradient[];
 };

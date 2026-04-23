@@ -1,4 +1,4 @@
-import { FormControlLabel, Slider, Switch, Tab, Tabs, Typography } from '@mui/material';
+import { Divider, FormControlLabel, Slider, Switch, Tab, Tabs, TextField, Typography } from '@mui/material';
 import ColorIcon from '@mui/icons-material/ColorLens';
 import GradientIcon from '@mui/icons-material/Gradient';
 import ImageIcon from '@mui/icons-material/Landscape';
@@ -29,6 +29,10 @@ class Inner extends React.Component<
   public render() {
 
     const hasPadding = this.props.data?.hasPadding ?? this.props.defaultHasPadding;
+    const hasMaxWidth = this.props.data?.hasMaxWidth ?? this.props.defaultHasMaxWidth;
+    const maxWidth = this.props.data?.maxWidth ?? this.props.defaultMaxWidth;
+    // const innerMaxWidth = this.props.data?.innerMaxWidth ?? this.props.defaultInnerMaxWidth;
+
     const modeFlag = this.props.data?.modeFlag ?? this.props.defaultModeFlag;
     const darken = this.props.data?.darken ?? this.props.defaultDarken;
     const lighten = this.props.data?.lighten ?? this.props.defaultLighten;
@@ -111,9 +115,12 @@ class Inner extends React.Component<
         {this.renderUI()}
 
         <br />
+        <Divider />
+        <br />
 
         {/* Render the common UI here for each tab - darken / lighten / padding */}
-        <div style={{ display: 'flex' }}>
+        <div style={{ display: 'flex', marginLeft: 16 }}>
+
           <div style={{ flex: 1 }}>
             <Typography variant="body1" id="linear-gradient-darken-label">
               {this.props.translations?.darken} (
@@ -158,6 +165,7 @@ class Inner extends React.Component<
 
           <div style={{ flex: 1, marginLeft: 16 }}>
             <FormControlLabel
+              sx={{ ml: 0, float: "unset" }}
               control={
                 <Switch
                   onChange={this.props.handleChangeHasPadding}
@@ -166,13 +174,44 @@ class Inner extends React.Component<
               }
               label={this.props.translations?.usePadding}
             />
+            <FormControlLabel
+              sx={{ ml: 0, float: "unset" }}
+              control={
+                <Switch
+                  onChange={this.props.handleChangeHasMaxWidth}
+                  checked={hasMaxWidth}
+                />
+              }
+              label={this.props.translations?.setMaxWidth}
+            />
           </div>
+
+          {hasMaxWidth &&
+            <div style={{ flex: 1, marginLeft: 16 }}>
+              <TextField
+                // placeholder={}
+                label="Outer max width (px)"
+                value={maxWidth}
+                onChange={e => this.props.handleChangeMaxWidth(e.target.value)}
+              />
+            </div>
+          }
+
+          {/* <div style={{ flex: 1, marginLeft: 16 }}>
+            <TextField
+              // placeholder={}
+              label="Inner max width (px)"
+              value={innerMaxWidth}
+              onChange={e => this.props.handleChangeInnerMaxWidth(e.target.value)}
+            />
+          </div> */}
+
         </div>
       </div>
     );
   }
 
-  renderModeSwitch = () => {
+  renderModeSwitch = (selectedPanel) => {
     const modeFlag = this.props.data?.modeFlag ?? this.props.defaultModeFlag;
 
     // console.log("modeFlag", modeFlag)
@@ -185,6 +224,9 @@ class Inner extends React.Component<
       // Needless complexity with bits, could have been done more elegantly
       checked = (modeFlag & this.state.mode) !== 0
 
+    let index = `onOff${selectedPanel}`
+    let labelText = this.props.translations[index]
+
     return (
       <FormControlLabel
         // MUST have the float: "unset" to cancel MC float:left on this
@@ -195,7 +237,7 @@ class Inner extends React.Component<
             checked={checked}
           />
         }
-        label={this.props.translations?.onOff}
+        label={labelText}
       />
     );
   };
@@ -206,7 +248,7 @@ class Inner extends React.Component<
         return (
           <>
             {/* Render the on/off switch for the panel */}
-            {this.renderModeSwitch()}
+            {this.renderModeSwitch(ModeEnum.COLOR_MODE_FLAG)}
 
             {/* Render the Background mono color controls */}
             <ColorComponent
@@ -224,7 +266,7 @@ class Inner extends React.Component<
         return (
           <React.Fragment>
             {/* Render the on/off switch for the panel */}
-            {this.renderModeSwitch()}
+            {this.renderModeSwitch(ModeEnum.GRADIENT_MODE_FLAG)}
 
             {/* Render the Background gradient color controls */}
             <LinearGradientComponent
@@ -259,7 +301,7 @@ class Inner extends React.Component<
         return (
           <React.Fragment>
             {/* Render the on/off switch for the panel */}
-            {this.renderModeSwitch()}
+            {this.renderModeSwitch(ModeEnum.IMAGE_MODE_FLAG)}
 
             {/* Render the Background image controls */}
             <ImageComponent
