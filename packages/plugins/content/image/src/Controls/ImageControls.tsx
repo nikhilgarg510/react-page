@@ -85,8 +85,10 @@ const ImageControls: ImageControlType = (props) => {
         placeholder={t(props.translations?.altPlaceholder) ?? ''}
         label={t(props.translations?.altLabel) ?? ''}
         name="alt"
-        sx={{ mt: 1, width: 400 }}
+        sx={{ mt: 1, width: "100%" }}
         value={props.data.alt ?? ''}
+        multiline
+        rows={2}
         onChange={(e) =>
           props.onChange({
             alt: e.target.value,
