@@ -190,7 +190,7 @@ class Inner extends React.Component<
             <div style={{ flex: 1, marginLeft: 16 }}>
               <TextField
                 // placeholder={}
-                label="Outer max width (px)"
+                label={this.props.translations?.maxWidth}
                 value={maxWidth}
                 onChange={e => this.props.handleChangeMaxWidth(e.target.value)}
               />

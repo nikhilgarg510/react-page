@@ -118,10 +118,6 @@ const BackgroundHtmlRenderer: FC<PropsWithChildren<BackgroundRendererProps>> = (
     props.lightenPreview !== undefined ? props.lightenPreview : lighten;
   const containerStyles = getStyles(props);
 
-  let shouldUseMaxWidth = false;
-  if (window.innerWidth > 768 && hasMaxWidth && maxWidth)
-    shouldUseMaxWidth = true
-
   let contentsMaxWidth = 1366;
   if (window.innerWidth >= 1920) {
     contentsMaxWidth = 1440;
@@ -137,7 +133,7 @@ const BackgroundHtmlRenderer: FC<PropsWithChildren<BackgroundRendererProps>> = (
     style={{
       ...containerStyles,
       ...(hasPadding ? {} : { padding: 0 }),
-      ...(shouldUseMaxWidth ? { borderRadius: 16 } : {})
+      ...(hasMaxWidth ? { borderRadius: 16 } : {})
     }}
   >
 
@@ -146,7 +142,7 @@ const BackgroundHtmlRenderer: FC<PropsWithChildren<BackgroundRendererProps>> = (
       style={{
         // tslint:disable-next-line:max-line-length
         backgroundImage: `linear-gradient(rgba(0, 0, 0, ${darkenFinal}), rgba(0, 0, 0, ${darkenFinal})),linear-gradient(rgba(255, 255, 255, ${lightenFinal}), rgba(255, 255, 255, ${lightenFinal}))`,
-        borderRadius: (shouldUseMaxWidth ? 16 : 0)
+        borderRadius: (hasMaxWidth ? 16 : 0)
       }}
     />
 
@@ -157,7 +153,7 @@ const BackgroundHtmlRenderer: FC<PropsWithChildren<BackgroundRendererProps>> = (
 
   </div>
 
-  if (shouldUseMaxWidth) {
+  if (hasMaxWidth) {
     return (
       <div style={{ maxWidth, paddingLeft: 8, paddingRight: 8, margin: "auto" }}>
         {background}
