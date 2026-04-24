@@ -224,7 +224,7 @@ class Inner extends React.Component<
       // Needless complexity with bits, could have been done more elegantly
       checked = (modeFlag & this.state.mode) !== 0
 
-    let index = `onOff${selectedPanel}`
+    const index = `onOff${selectedPanel}`
     let labelText = this.props.translations[index]
 
     return (
